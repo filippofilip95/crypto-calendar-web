@@ -1,27 +1,48 @@
+import React from 'react'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
-export default ({ pathname }) => (
-  <header>
-    <Link prefetch href='/'>
-      <a className={pathname === '/' && 'is-active'}>Home</a>
-    </Link>
+//ui
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
+import MenuIcon from 'material-ui-icons/Menu'
 
-    <Link prefetch href='/about'>
-      <a className={pathname === '/about' && 'is-active'}>About</a>
-    </Link>
+//helpers
+import { withStyles } from 'material-ui/styles'
 
-    <style jsx>{`
-      header {
-        margin-bottom: 25px;
-      }
-      a {
-        font-size: 14px;
-        margin-right: 15px;
-        text-decoration: none;
-      }
-      .is-active {
-        text-decoration: underline;
-      }
-    `}</style>
-  </header>
-)
+// styles
+import styles from './styles/HeaderStyles'
+
+const Header = props => {
+  const { classes } = props
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography type="title" color="inherit" className={classes.flex}>
+            Crypto Events Calendar
+          </Typography>
+          <Link href="material">
+            <Button color="inherit">Login</Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
+}
+
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(Header)

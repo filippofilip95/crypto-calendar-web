@@ -9,7 +9,8 @@ import Dialog, {
 } from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
-import withRoot from '../src/withRoot'
+import withRoot from '../lib/withRoot'
+import App from '../components/App'
 
 const styles = theme => ({
   root: {
@@ -40,28 +41,30 @@ class Index extends React.Component {
     const { open } = this.state
 
     return (
-      <div className={classes.root}>
-        <Dialog open={open} onClose={this.handleClose}>
-          <DialogTitle>Super Secret Password</DialogTitle>
-          <DialogContent>
-            <DialogContentText>1-2-3-4-5</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button color="primary" onClick={this.handleClose}>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Typography type="display1" gutterBottom>
-          Material-UI
-        </Typography>
-        <Typography type="subheading" gutterBottom>
-          example project
-        </Typography>
-        <Button raised color="secondary" onClick={this.handleClick}>
-          Super Secret Password
-        </Button>
-      </div>
+      <App>
+        <div className={classes.root}>
+          <Dialog open={open} onClose={this.handleClose}>
+            <DialogTitle>Super Secret Password</DialogTitle>
+            <DialogContent>
+              <DialogContentText>1-2-3-4-5</DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button color="primary" onClick={this.handleClose}>
+                OK
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Typography type="display1" gutterBottom>
+            Material-UI
+          </Typography>
+          <Typography type="subheading" gutterBottom>
+            example project
+          </Typography>
+          <Button raised color="secondary" onClick={this.handleClick}>
+            Super Secret Password
+          </Button>
+        </div>
+      </App>
     )
   }
 }
