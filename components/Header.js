@@ -10,14 +10,13 @@ import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 
-//helpers
+// helpers
 import { withStyles } from 'material-ui/styles'
 
 // styles
 import styles from './styles/HeaderStyles'
 
-const Header = props => {
-  const { classes } = props
+const Header = ({ classes, handleOpenDrawer }) => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -26,6 +25,7 @@ const Header = props => {
             className={classes.menuButton}
             color="inherit"
             aria-label="Menu"
+            onClick={handleOpenDrawer}
           >
             <MenuIcon />
           </IconButton>
@@ -43,6 +43,7 @@ const Header = props => {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleOpenDrawer: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Header)

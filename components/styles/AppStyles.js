@@ -24,3 +24,14 @@ export default `
         transform: rotate(3deg) translate(0px, -4px);
       }
     `
+
+export const appContainerStyles = {
+  appContainer: {
+    maxWidth: 1200,
+    padding: 20,
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+}

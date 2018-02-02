@@ -10,7 +10,7 @@ import Dialog, {
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
 import withRoot from '../lib/withRoot'
-import App from '../components/App'
+import App from '../containers/App'
 
 const styles = theme => ({
   root: {
