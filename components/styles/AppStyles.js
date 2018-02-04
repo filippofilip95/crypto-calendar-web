@@ -5,7 +5,7 @@ export default `
         pointer-events: none;
       }
       #nprogress .bar {
-        background: blue;
+        background: #F7CB15;
         position: fixed;
         z-index: 1031;
         top: 0;

@@ -5,6 +5,7 @@ import ExpansionPanel, {
   ExpansionPanelDetails,
 } from 'material-ui/ExpansionPanel'
 import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import { gql, graphql } from 'react-apollo'
 import ErrorMessage from './ErrorMessage'
@@ -58,11 +59,10 @@ function PostList({
             </ExpansionPanelDetails>
           </ExpansionPanel>,
         )}
-        {areMorePosts
-          ? <button onClick={() => loadMorePosts()}>
-              {' '}{loading ? 'Loading...' : 'Show More'}{' '}
-            </button>
-          : ''}
+        {areMorePosts &&
+          <Button raised color="primary" onClick={() => loadMorePosts()}>
+            Show More
+          </Button>}
       </section>
     )
   }

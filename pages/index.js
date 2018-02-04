@@ -1,5 +1,5 @@
 // components
-import App from '../containers/App'
+import App from '../hoc/AppHoc'
 import PostList from '../components/PostList'
 
 export default props =>

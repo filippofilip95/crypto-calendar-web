@@ -10,7 +10,9 @@ import DrawerList from './DrawerList'
 const Drawer = ({ drawerVisible, handleCloseDrawer }) => {
   return (
     <MaterialDrawer open={drawerVisible} onClose={handleCloseDrawer}>
-      <DrawerList />
+      <div onClick={handleCloseDrawer}>
+        <DrawerList />
+      </div>
     </MaterialDrawer>
   )
 }
