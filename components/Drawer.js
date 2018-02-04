@@ -18,7 +18,7 @@ const Drawer = ({ drawerVisible, handleCloseDrawer }) => {
 }
 
 Drawer.propTypes = {
-  drawerVisible: PropTypes.object.isRequired,
+  drawerVisible: PropTypes.bool.isRequired,
   handleCloseDrawer: PropTypes.func.isRequired,
 }
 

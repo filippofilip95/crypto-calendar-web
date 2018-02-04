@@ -29,9 +29,15 @@ const Header = ({ classes, handleOpenDrawer }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="inherit" className={classes.flex}>
-            Crypto Events Calendar
-          </Typography>
+          <Link href="/">
+            <Typography
+              type="title"
+              color="inherit"
+              className={classes.headerTitle}
+            >
+              Crypto Events Calendar
+            </Typography>
+          </Link>
           <Link href="material">
             <Button color="inherit">Login</Button>
           </Link>
@@ -43,7 +49,7 @@ const Header = ({ classes, handleOpenDrawer }) => {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleOpenDrawer: PropTypes.object.isRequired,
+  handleOpenDrawer: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(Header)
