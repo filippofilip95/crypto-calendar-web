@@ -30,7 +30,7 @@ const CreateEventForm = props => {
   return (
     <Paper className={classes.root} elevation={4}>
       <Typography
-        type="headline"
+        variant="headline"
         color="inherit"
         className={classes.headerTitle}
       >
@@ -97,14 +97,14 @@ const CreateEventForm = props => {
           label="Proof"
           buttonTitle="Select Image"
           buttonProps={{
-            raised: true,
+            variant: 'raised',
           }}
           required
           component={ImageField}
         />
 
         <Button
-          raised
+          variant="raised"
           color="primary"
           className={classes.button}
           onClick={handleSubmit}

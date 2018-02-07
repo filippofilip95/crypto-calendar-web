@@ -1,8 +1,11 @@
+import withInit from '../lib/withInit'
+
 // components
-import App from '../hoc/AppHoc'
+import Layout from '../hoc/LayoutHoc'
 import PostList from '../components/PostList'
 
-export default props =>
-  <App {...props}>
+export default withInit(() =>
+  <Layout>
     <PostList />
-  </App>
+  </Layout>,
+)

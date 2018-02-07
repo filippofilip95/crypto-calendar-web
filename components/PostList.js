@@ -7,7 +7,8 @@ import ExpansionPanel, {
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import { gql, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
 import PostUpvoter from './PostUpvoter'
 const styles = theme => ({
@@ -60,7 +61,11 @@ function PostList({
           </ExpansionPanel>,
         )}
         {areMorePosts &&
-          <Button raised color="primary" onClick={() => loadMorePosts()}>
+          <Button
+            variant="raised"
+            color="primary"
+            onClick={() => loadMorePosts()}
+          >
             Show More
           </Button>}
       </section>

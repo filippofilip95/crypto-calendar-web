@@ -1,8 +1,11 @@
-// containet
-import App from '../hoc/AppHoc'
+import withInit from '../lib/withInit'
+
+// container
+import Layout from '../hoc/LayoutHoc'
 import CreateEventFrom from '../hoc/forms/CreateEventFormHoc'
 
-export default props =>
-  <App {...props}>
+export default withInit(() =>
+  <Layout>
     <CreateEventFrom />
-  </App>
+  </Layout>,
+)

@@ -31,14 +31,14 @@ const Header = ({ classes, handleOpenDrawer }) => {
           </IconButton>
           <Link href="/">
             <Typography
-              type="title"
+              variant="title"
               color="inherit"
               className={classes.headerTitle}
             >
               Crypto Events Calendar
             </Typography>
           </Link>
-          <Link href="material">
+          <Link href="/">
             <Button color="inherit">Login</Button>
           </Link>
         </Toolbar>
