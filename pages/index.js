@@ -6,6 +6,6 @@ import PostList from '../components/PostList'
 
 export default withInit(() =>
   <Layout>
-    <PostList />
+    {/*<PostList />*/}
   </Layout>,
 )

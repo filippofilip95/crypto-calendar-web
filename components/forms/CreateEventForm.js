@@ -13,6 +13,7 @@ import Typography from 'material-ui/Typography'
 import TextField from '../fields/TextField'
 import SelectField from '../fields/SelectField'
 import ImageField from '../fields/ImageField'
+import AutoCompleteField from '../fields/AutoCompleteField'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -26,7 +27,7 @@ const styles = theme => ({
 })
 
 const CreateEventForm = props => {
-  const { classes, handleSubmit } = props
+  const { classes, handleSubmit, allCryptoCoins, setCoinsFilter } = props
   return (
     <Paper className={classes.root} elevation={4}>
       <Typography
@@ -48,14 +49,14 @@ const CreateEventForm = props => {
         <Field
           fullWidth
           required
-          name="eventCategory"
+          name="category"
           label="Category"
           component={SelectField}
         >
-          <MenuItem value="release" key="release">
+          <MenuItem value="Release" key="release">
             Release
           </MenuItem>
-          <MenuItem value="rebranding" key="rebranding">
+          <MenuItem value="Rebranding" key="rebranding">
             Rebranding
           </MenuItem>
           <MenuItem value="community" key="community">
@@ -65,6 +66,18 @@ const CreateEventForm = props => {
             Other
           </MenuItem>
         </Field>
+        <Field
+          fullWidth
+          label="Coin Name"
+          required
+          name="cryptoCoinId"
+          component={AutoCompleteField}
+          options={allCryptoCoins}
+          valueKey="id"
+          labelKey="fullName"
+          simpleValue
+          onInputChange={value => setCoinsFilter(value)}
+        />
         <Field
           fullWidth
           margin="normal"
