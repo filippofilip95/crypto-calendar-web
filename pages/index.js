@@ -2,10 +2,10 @@ import withInit from '../lib/withInit'
 
 // components
 import Layout from '../hoc/LayoutHoc'
-import PostList from '../components/PostList'
+import EventsList from '../hoc/EventsListHoc'
 
 export default withInit(() =>
   <Layout>
-    {/*<PostList />*/}
+    <EventsList />
   </Layout>,
 )

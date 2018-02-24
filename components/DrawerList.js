@@ -9,6 +9,7 @@ import { withStyles } from 'material-ui/styles'
 // icon
 import InboxIcon from 'material-ui-icons/Inbox'
 import CreateIcon from 'material-ui-icons/Create'
+import ListIcon from 'material-ui-icons/List'
 import InfoOutlineIcon from 'material-ui-icons/InfoOutline'
 
 const styles = {
@@ -19,6 +20,14 @@ const styles = {
 
 const DrawerList = ({ classes }) =>
   <List className={classes.list}>
+    <Link href="/" prefetch>
+      <ListItem button>
+        <ListItemIcon>
+          <ListIcon />
+        </ListItemIcon>
+        <ListItemText primary="Events List" />
+      </ListItem>
+    </Link>
     <Link href="create" prefetch>
       <ListItem button>
         <ListItemIcon>

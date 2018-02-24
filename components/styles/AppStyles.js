@@ -27,8 +27,11 @@ export default `
 
 export const appContainerStyles = {
   appContainer: {
+    display: 'flex',
+    flex: 1,
     maxWidth: 1200,
     padding: 20,
+    justifyContent: 'center',
   },
   container: {
     display: 'flex',

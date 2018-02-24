@@ -23,6 +23,8 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
+    flexGrow: 1,
+    maxWidth: 800,
   }),
   button: {
     marginTop: theme.spacing.unit * 3,
