@@ -15,6 +15,9 @@ import SelectField from '../fields/SelectField'
 import ImageField from '../fields/ImageField'
 import AutoCompleteField from '../fields/AutoCompleteField'
 
+// validation
+import { required, email, minLength } from '../fields/validation'
+
 const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: 16,
@@ -45,6 +48,7 @@ const CreateEventForm = props => {
           label="Title"
           required
           component={TextField}
+          validate={[required, minLength(10)]}
         />
         <Field
           fullWidth
@@ -52,6 +56,7 @@ const CreateEventForm = props => {
           name="category"
           label="Category"
           component={SelectField}
+          validate={[required]}
         >
           <MenuItem value="Release" key="release">
             Release
@@ -77,6 +82,7 @@ const CreateEventForm = props => {
           labelKey="fullName"
           simpleValue
           onInputChange={value => setCoinsFilter(value)}
+          validate={[required]}
         />
         <Field
           fullWidth
@@ -86,6 +92,7 @@ const CreateEventForm = props => {
           required
           multiline
           component={TextField}
+          validate={[required, minLength(10)]}
         />
         <Field
           fullWidth
@@ -95,6 +102,7 @@ const CreateEventForm = props => {
           multiline
           component={TextField}
           margin="normal"
+          validate={[required]}
         />
         <Field
           fullWidth
@@ -103,6 +111,7 @@ const CreateEventForm = props => {
           required
           component={TextField}
           margin="normal"
+          validate={[email]}
         />
         <Field
           fullWidth

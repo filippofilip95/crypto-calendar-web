@@ -9,7 +9,7 @@ import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown'
 import ArrowDropUpIcon from 'material-ui-icons/ArrowDropUp'
 import ClearIcon from 'material-ui-icons/Clear'
 import { InputLabel } from 'material-ui/Input'
-import { FormControl } from 'material-ui/Form'
+import { FormControl, FormHelperText } from 'material-ui/Form'
 import { MenuItem } from 'material-ui/Menu'
 
 // styles
@@ -77,16 +77,29 @@ class AutoCompleteField extends React.PureComponent {
   }
 
   render() {
-    const { classes, input, fullWidth, ...rest } = this.props
+    const {
+      meta: { error, touched },
+      classes,
+      input,
+      fullWidth,
+      ...rest
+    } = this.props
+    const isError = touched && !!error
+
     return (
       <FormControl fullWidth={fullWidth} className={classes.root}>
-        <InputLabel required={rest.required} shrink={this.state.focused}>
+        <InputLabel
+          required={rest.required}
+          shrink={this.state.focused}
+          error={isError}
+        >
           {rest.label}
         </InputLabel>
         <Input
           fullWidth
           onChange={input.onChange}
           inputComponent={SelectWrapped}
+          error={isError}
           inputProps={{
             classes,
             placeholder: rest.placeholder || null,
@@ -97,6 +110,10 @@ class AutoCompleteField extends React.PureComponent {
             ...rest,
           }}
         />
+        {isError &&
+          <FormHelperText error={isError}>
+            {error}
+          </FormHelperText>}
       </FormControl>
     )
   }
