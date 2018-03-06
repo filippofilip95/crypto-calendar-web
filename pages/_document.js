@@ -29,6 +29,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>
           <Main />
@@ -59,14 +60,14 @@ MyDocument.getInitialProps = ctx => {
 
   // Get the context of the page to collected side effects.
   const pageContext = getPageContext()
-  const page = ctx.renderPage(Component => props =>
+  const page = ctx.renderPage(Component => props => (
     <JssProvider
       registry={pageContext.sheetsRegistry}
       generateClassName={pageContext.generateClassName}
     >
       <Component pageContext={pageContext} {...props} />
-    </JssProvider>,
-  )
+    </JssProvider>
+  ))
 
   return {
     ...page,
@@ -76,10 +77,10 @@ MyDocument.getInitialProps = ctx => {
         id="jss-server-side"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: pageContext.sheetsRegistry.toString(),
+          __html: pageContext.sheetsRegistry.toString()
         }}
       />
-    ),
+    )
   }
 }
 

@@ -7,8 +7,8 @@ const styles = theme => ({
   selectField: {
     marginTop: theme.spacing.unit,
     display: 'flex',
-    flex: 1,
-  },
+    flex: 1
+  }
 })
 
 const SelectField = props => {
@@ -21,10 +21,7 @@ const SelectField = props => {
         {label}
       </InputLabel>
       <Select {...rest} error={isError} />
-      {isError &&
-        <FormHelperText error={isError}>
-          {error}
-        </FormHelperText>}
+      {isError && <FormHelperText error={isError}>{error}</FormHelperText>}
     </FormControl>
   )
 }

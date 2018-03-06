@@ -4,11 +4,10 @@ import Select from 'react-select'
 
 // ui
 import Typography from 'material-ui/Typography'
-import Input from 'material-ui/Input'
 import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown'
 import ArrowDropUpIcon from 'material-ui-icons/ArrowDropUp'
 import ClearIcon from 'material-ui-icons/Clear'
-import { InputLabel } from 'material-ui/Input'
+import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl, FormHelperText } from 'material-ui/Form'
 import { MenuItem } from 'material-ui/Menu'
 
@@ -29,7 +28,7 @@ const Option = props => {
       onClick={handleClick}
       component="div"
       style={{
-        fontWeight: isSelected ? 500 : 400,
+        fontWeight: isSelected ? 500 : 400
       }}
     >
       {children}
@@ -37,32 +36,29 @@ const Option = props => {
   )
 }
 
-const SelectWrapped = props =>
+const SelectWrapped = props => (
   <Select
     optionComponent={Option}
-    noResultsText={
-      <Typography>
-        {'No results found'}
-      </Typography>
-    }
+    noResultsText={<Typography>{'No results found'}</Typography>}
     arrowRenderer={({ isOpen }) =>
-      isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+      isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />
+    }
     clearRenderer={() => <ClearIcon />}
-    valueComponent={({ children }) =>
-      <div className="Select-value">
-        {children}
-      </div>}
+    valueComponent={({ children }) => (
+      <div className="Select-value">{children}</div>
+    )}
     {...props}
   />
+)
 
 class AutoCompleteField extends React.PureComponent {
   state = {
-    focused: false,
+    focused: false
   }
 
   handleOnFocus = () => {
     this.setState({
-      focused: true,
+      focused: true
     })
   }
 
@@ -70,7 +66,7 @@ class AutoCompleteField extends React.PureComponent {
     const { input } = this.props
     if (!input.value) {
       this.setState({
-        focused: false,
+        focused: false
       })
     }
     input.onBlur(input.value)
@@ -107,13 +103,10 @@ class AutoCompleteField extends React.PureComponent {
             onFocus: this.handleOnFocus,
             value: input.value,
             filterOptions: options => options,
-            ...rest,
+            ...rest
           }}
         />
-        {isError &&
-          <FormHelperText error={isError}>
-            {error}
-          </FormHelperText>}
+        {isError && <FormHelperText error={isError}>{error}</FormHelperText>}
       </FormControl>
     )
   }

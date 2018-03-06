@@ -14,9 +14,11 @@ import TextField from '../fields/TextField'
 import SelectField from '../fields/SelectField'
 import ImageField from '../fields/ImageField'
 import AutoCompleteField from '../fields/AutoCompleteField'
+import DatePickerField from '../fields/DatePickerField'
 
 // validation
 import { required, email, minLength } from '../fields/validation'
+const minLength10 = minLength(10)
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -24,11 +26,11 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
     flexGrow: 1,
-    maxWidth: 800,
+    maxWidth: 800
   }),
   button: {
-    marginTop: theme.spacing.unit * 3,
-  },
+    marginTop: theme.spacing.unit * 3
+  }
 })
 
 const CreateEventForm = props => {
@@ -50,7 +52,7 @@ const CreateEventForm = props => {
           label="Title"
           required
           component={TextField}
-          validate={[required, minLength(10)]}
+          validate={[required, minLength10]}
         />
         <Field
           fullWidth
@@ -94,7 +96,7 @@ const CreateEventForm = props => {
           required
           multiline
           component={TextField}
-          validate={[required, minLength(10)]}
+          validate={[required]}
         />
         <Field
           fullWidth
@@ -104,6 +106,14 @@ const CreateEventForm = props => {
           multiline
           component={TextField}
           margin="normal"
+          validate={[required, minLength10]}
+        />
+        <Field
+          fullWidth
+          name="date"
+          label="Date"
+          required
+          component={DatePickerField}
           validate={[required]}
         />
         <Field
@@ -121,12 +131,11 @@ const CreateEventForm = props => {
           label="Proof"
           buttonTitle="Select Image"
           buttonProps={{
-            variant: 'raised',
+            variant: 'raised'
           }}
           required
           component={ImageField}
         />
-
         <Button
           variant="raised"
           color="primary"
@@ -142,7 +151,7 @@ const CreateEventForm = props => {
 
 CreateEventForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(CreateEventForm)
