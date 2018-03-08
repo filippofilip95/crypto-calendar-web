@@ -2,9 +2,9 @@ const ITEM_HEIGHT = 48
 
 export default theme => ({
   root: {
-    marginTop: 2 * theme.spacing.unit,
+    marginTop: theme.spacing.unit,
     display: 'flex',
-    flex: 1,
+    flex: 1
   },
 
   // We had to use a lot of global selectors in order to style react-select.
@@ -19,27 +19,27 @@ export default theme => ({
       height: 'auto',
       background: 'transparent',
       '&:hover': {
-        boxShadow: 'none',
-      },
+        boxShadow: 'none'
+      }
     },
     '.Select-multi-value-wrapper': {
       flexGrow: 1,
       display: 'flex',
-      flexWrap: 'wrap',
+      flexWrap: 'wrap'
     },
     '.Select--multi .Select-input': {
-      margin: 0,
+      margin: 0
     },
     '.Select.has-value.is-clearable.Select--single > .Select-control .Select-value': {
-      padding: 0,
+      padding: 0
     },
     '.Select-noresults': {
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing.unit * 2
     },
     '.Select-input': {
       display: 'inline-flex !important',
       padding: 0,
-      height: 'auto',
+      height: 'auto'
     },
     '.Select-input input': {
       background: 'transparent',
@@ -50,7 +50,7 @@ export default theme => ({
       fontFamily: 'inherit',
       fontSize: 'inherit',
       margin: 0,
-      outline: 0,
+      outline: 0
     },
     '.Select-placeholder, .Select--single .Select-value': {
       position: 'absolute',
@@ -62,11 +62,11 @@ export default theme => ({
       alignItems: 'center',
       fontFamily: theme.typography.fontFamily,
       fontSize: theme.typography.pxToRem(16),
-      padding: 0,
+      padding: 0
     },
     '.Select-placeholder': {
       opacity: 0.42,
-      color: theme.palette.common.black,
+      color: theme.palette.common.black
     },
     '.Select-menu-outer': {
       backgroundColor: theme.palette.background.paper,
@@ -76,24 +76,24 @@ export default theme => ({
       top: `calc(100% + ${theme.spacing.unit}px)`,
       width: '100%',
       zIndex: 2,
-      maxHeight: ITEM_HEIGHT * 6.5,
+      maxHeight: ITEM_HEIGHT * 6.5
     },
     '.Select.is-focused:not(.is-open) > .Select-control': {
-      boxShadow: 'none',
+      boxShadow: 'none'
     },
     '.Select-menu': {
       maxHeight: ITEM_HEIGHT * 6.5,
-      overflowY: 'auto',
+      overflowY: 'auto'
     },
     '.Select-menu div': {
-      boxSizing: 'content-box',
+      boxSizing: 'content-box'
     },
     '.Select-arrow-zone, .Select-clear-zone': {
       color: theme.palette.action.active,
       cursor: 'pointer',
       height: 21,
       width: 21,
-      zIndex: 1,
+      zIndex: 1
     },
     // Only for screen readers. We can't use display none.
     '.Select-aria-only': {
@@ -102,7 +102,7 @@ export default theme => ({
       clip: 'rect(0 0 0 0)',
       height: 1,
       width: 1,
-      margin: -1,
-    },
-  },
+      margin: -1
+    }
+  }
 })

@@ -49,7 +49,6 @@ class DatePickerField extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props)
     const {
       meta: { error, touched },
       theme,
@@ -57,6 +56,7 @@ class DatePickerField extends React.PureComponent {
       required,
       label,
       input,
+      helperText,
       ...rest
     } = this.props
     const date = input.value ? format(input.value, 'MM/DD/YYYY') : ''
@@ -94,7 +94,11 @@ class DatePickerField extends React.PureComponent {
             selected={input.value}
           />
         </Modal>
-        {isError && <FormHelperText error={isError}>{error}</FormHelperText>}
+        {(isError || helperText) && (
+          <FormHelperText error={isError}>
+            {(isError && error) || helperText}
+          </FormHelperText>
+        )}
       </FormControl>
     )
   }

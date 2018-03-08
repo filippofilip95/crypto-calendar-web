@@ -12,7 +12,14 @@ const styles = theme => ({
 })
 
 const SelectField = props => {
-  const { meta: { error, touched }, classes, required, label, ...rest } = props
+  const {
+    meta: { error, touched },
+    classes,
+    required,
+    label,
+    helperText,
+    ...rest
+  } = props
   const isError = touched && !!error
 
   return (
@@ -21,7 +28,11 @@ const SelectField = props => {
         {label}
       </InputLabel>
       <Select {...rest} error={isError} />
-      {isError && <FormHelperText error={isError}>{error}</FormHelperText>}
+      {(isError || helperText) && (
+        <FormHelperText error={isError}>
+          {(isError && error) || helperText}
+        </FormHelperText>
+      )}
     </FormControl>
   )
 }
