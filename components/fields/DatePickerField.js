@@ -11,7 +11,7 @@ import InfiniteCalendar from 'react-infinite-calendar'
 import Modal from 'material-ui/Modal'
 
 // contants
-import { today } from '../../lib/constants'
+import { TODAY } from '../../lib/constants'
 
 const styles = theme => ({
   selectField: {
@@ -84,7 +84,7 @@ class DatePickerField extends React.PureComponent {
             width={400}
             height={600}
             onSelect={this.handlePickerOnSelect}
-            minDate={today}
+            minDate={TODAY}
             theme={{
               headerColor: theme.palette.primary.main,
               weekdayColor: theme.palette.primary.dark,

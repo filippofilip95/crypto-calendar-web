@@ -9,6 +9,7 @@ import Button from 'material-ui/Button'
 import { MenuItem } from 'material-ui/Menu'
 import Typography from 'material-ui/Typography'
 import Grid from 'material-ui/Grid'
+import { LinearProgress } from 'material-ui/Progress'
 
 // fields
 import TextField from '../fields/TextField'
@@ -31,17 +32,34 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
     flexGrow: 1,
-    maxWidth: 800
+    maxWidth: 800,
+    position: 'relative'
   }),
   button: {
     marginTop: theme.spacing.unit * 3
+  },
+  linearProgress: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0
   }
 })
 
 const CreateEventForm = props => {
-  const { classes, handleSubmit, allCryptoCoins, setCoinsFilter } = props
+  const {
+    classes,
+    handleSubmit,
+    allCryptoCoins = [],
+    setCoinsFilter,
+    loading,
+    mutationLoading
+  } = props
   return (
     <Paper className={classes.root} elevation={4}>
+      {(loading || mutationLoading) && (
+        <LinearProgress className={classes.linearProgress} />
+      )}
       <Typography variant="headline" color="inherit">
         Add Crypto Event
       </Typography>
@@ -170,6 +188,7 @@ const CreateEventForm = props => {
             <Button
               variant="raised"
               color="primary"
+              disabled={mutationLoading}
               className={classes.button}
               onClick={handleSubmit}
             >

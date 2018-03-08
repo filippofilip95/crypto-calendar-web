@@ -11,10 +11,11 @@ import { createEvent } from '../../gql/mutations'
 import createEventForm from '../../components/forms/CreateEventForm'
 
 const withInit = compose(
+  withState('mutationLoading', 'setMutationLoading', false),
   withState('coinsFilter', 'setCoinsFilter', ''),
   withPropsOnChange(['setCoinsFilter'], ({ setCoinsFilter }) => ({
-    setCoinsFilter: debounce(setCoinsFilter, 500),
-  })),
+    setCoinsFilter: debounce(setCoinsFilter, 500)
+  }))
 )
 
 const withData = apolloCompose(
@@ -22,32 +23,39 @@ const withData = apolloCompose(
     options: ({ coinsFilter }) => ({
       variables: {
         filter: {
-          fullName_contains: coinsFilter,
+          fullName_contains: coinsFilter
         },
         orderBy: 'sortOrder_ASC',
-        first: 100,
-      },
+        first: 100
+      }
     }),
-    props: ({ data: { loading, allCryptoCoins } }) =>
-      !loading && { allCryptoCoins },
+    props: ({ data: { loading, allCryptoCoins } }) => ({
+      loading,
+      allCryptoCoins
+    })
   }),
   graphql(createEvent, {
-    props: ({ mutate }) => ({
-      onSubmit: variables => {
-        console.log(variables)
-        return mutate({
-          variables: {
-            ...variables,
-            date: new Date(),
-          },
-        })
-      },
-    }),
-  }),
+    props: ({ mutate, ownProps: { setMutationLoading } }) => ({
+      onSubmit: async variables => {
+        try {
+          setMutationLoading(true)
+          await mutate({
+            variables: {
+              ...variables,
+              date: new Date()
+            }
+          })
+          setMutationLoading(false)
+        } catch (e) {
+          setMutationLoading(false)
+        }
+      }
+    })
+  })
 )
 
 const withReduxForm = reduxForm({
-  form: 'createEventForm',
+  form: 'createEventForm'
 })
 
 export default compose(withInit, withData, withReduxForm)(createEventForm)
