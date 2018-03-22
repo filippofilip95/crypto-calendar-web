@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 export const createEvent = gql`
   mutation createEvent(
-    $category: EventCategory!
+    $category: [EventCategory!]!
     $date: DateTime!
     $description: String!
     $email: String

@@ -22,7 +22,7 @@ import DatePickerField from '../fields/DatePickerField'
 import { required, email, minLength } from '../fields/validation'
 
 // constants
-import { TIMES_24_MODE } from '../../lib/constants'
+import { TIMES_24_MODE, EVENT_CATEGORIES } from '../../lib/constants'
 
 const minLength10 = minLength(10)
 
@@ -99,18 +99,11 @@ const CreateEventForm = props => {
               component={SelectField}
               validate={[required]}
             >
-              <MenuItem value="Release" key="release">
-                Release
-              </MenuItem>
-              <MenuItem value="Rebranding" key="rebranding">
-                Rebranding
-              </MenuItem>
-              <MenuItem value="community" key="community">
-                Community Event
-              </MenuItem>
-              <MenuItem value="other" key="other">
-                Other
-              </MenuItem>
+              {EVENT_CATEGORIES.map(({ name, value }) => (
+                <MenuItem value={value} key={value}>
+                  {name}
+                </MenuItem>
+              ))}
             </Field>
           </Grid>
           <Grid item xs={12}>
@@ -122,7 +115,7 @@ const CreateEventForm = props => {
               required
               multiline
               component={TextField}
-              validate={[required]}
+              validate={[required, minLength10]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -167,7 +160,6 @@ const CreateEventForm = props => {
               fullWidth
               name="email"
               label="Email"
-              required
               component={TextField}
               margin="normal"
               validate={[email]}

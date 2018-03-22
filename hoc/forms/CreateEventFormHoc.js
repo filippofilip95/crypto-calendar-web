@@ -39,12 +39,7 @@ const withData = apolloCompose(
       onSubmit: async variables => {
         try {
           setMutationLoading(true)
-          await mutate({
-            variables: {
-              ...variables,
-              date: new Date()
-            }
-          })
+          await mutate({ variables })
           setMutationLoading(false)
         } catch (e) {
           setMutationLoading(false)
