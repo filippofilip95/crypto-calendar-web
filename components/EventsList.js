@@ -6,10 +6,11 @@ import { branch, renderComponent } from 'recompose'
 import { withStyles } from 'material-ui/styles'
 
 // compoentns
-import EventsListRow from './EventsListRow'
+import EventsListRow from '../hoc/EventsListRowHoc'
 
 const styles = theme => ({
   root: {
+    minWidth: 0,
     flexGrow: 1
   }
 })

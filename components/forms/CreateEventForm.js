@@ -28,11 +28,8 @@ const minLength10 = minLength(10)
 
 const styles = theme => ({
   root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3,
-    flexGrow: 1,
-    maxWidth: 800,
+    paddingTop: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing.unit * 3,
     position: 'relative'
   }),
   button: {

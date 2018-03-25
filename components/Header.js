@@ -8,13 +8,13 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
-import MenuIcon from 'material-ui-icons/Menu'
+import Icon from 'material-ui/Icon'
 
 // helpers
 import { withStyles } from 'material-ui/styles'
 
 // styles
-import styles from './styles/HeaderStyles'
+import styles from './styles/headerStyles'
 
 const Header = ({ classes, handleOpenDrawer }) => {
   return (
@@ -27,7 +27,7 @@ const Header = ({ classes, handleOpenDrawer }) => {
             aria-label="Menu"
             onClick={handleOpenDrawer}
           >
-            <MenuIcon />
+            <Icon>menu</Icon>
           </IconButton>
           <Link href="/">
             <Typography
@@ -49,7 +49,7 @@ const Header = ({ classes, handleOpenDrawer }) => {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleOpenDrawer: PropTypes.func.isRequired,
+  handleOpenDrawer: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Header)

@@ -32,9 +32,11 @@ export const appContainerStyles = {
     maxWidth: 1200,
     padding: 20,
     justifyContent: 'center',
+    minWidth: 0
   },
   container: {
     display: 'flex',
     justifyContent: 'center',
-  },
+    minWidth: 0
+  }
 }

@@ -2964,12 +2964,6 @@ make-dir@^1.0.0:
   dependencies:
     pify "^3.0.0"
 
-material-ui-icons@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/material-ui-icons/-/material-ui-icons-1.0.0-beta.17.tgz#5f19af54a2d99eeef347a55414a6853e1c850dc3"
-  dependencies:
-    recompose "^0.26.0"
-
 material-ui@^1.0.0-beta.31:
   version "1.0.0-beta.32"
   resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-1.0.0-beta.32.tgz#d9b5f52b8a978786e9b8217338a5ca35a75bf98e"

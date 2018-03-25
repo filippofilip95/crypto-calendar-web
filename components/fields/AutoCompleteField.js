@@ -4,15 +4,13 @@ import Select from 'react-select'
 
 // ui
 import Typography from 'material-ui/Typography'
-import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown'
-import ArrowDropUpIcon from 'material-ui-icons/ArrowDropUp'
-import ClearIcon from 'material-ui-icons/Clear'
+import Icon from 'material-ui/Icon'
 import Input, { InputLabel } from 'material-ui/Input'
 import { FormControl, FormHelperText } from 'material-ui/Form'
 import { MenuItem } from 'material-ui/Menu'
 
 // styles
-import styles from '../styles/AutoCompleteFieldStyles'
+import styles from '../styles/autoCompleteFieldStyles'
 
 const Option = props => {
   const { children, isFocused, isSelected, onFocus } = props
@@ -41,9 +39,9 @@ const SelectWrapped = props => (
     optionComponent={Option}
     noResultsText={<Typography>{'No results found'}</Typography>}
     arrowRenderer={({ isOpen }) =>
-      isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />
+      isOpen ? <Icon>arrow_drop_up</Icon> : <Icon>arrow_drop_down</Icon>
     }
-    clearRenderer={() => <ClearIcon />}
+    clearRenderer={() => <Icon>clear</Icon>}
     valueComponent={({ children }) => (
       <div className="Select-value">{children}</div>
     )}

@@ -5,33 +5,28 @@ import Link from 'next/link'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
-
-// icon
-import InboxIcon from 'material-ui-icons/Inbox'
-import CreateIcon from 'material-ui-icons/Create'
-import ListIcon from 'material-ui-icons/List'
-import InfoOutlineIcon from 'material-ui-icons/InfoOutline'
+import Icon from 'material-ui/Icon'
 
 const styles = {
   list: {
-    width: 250,
-  },
+    width: 250
+  }
 }
 
-const DrawerList = ({ classes }) =>
+const DrawerList = ({ classes }) => (
   <List className={classes.list}>
     <Link href="/" prefetch>
       <ListItem button>
         <ListItemIcon>
-          <ListIcon />
+          <Icon>list</Icon>
         </ListItemIcon>
-        <ListItemText primary="Events List" />
+        <ListItemText primary="Events List" />``
       </ListItem>
     </Link>
     <Link href="create" prefetch>
       <ListItem button>
         <ListItemIcon>
-          <CreateIcon />
+          <Icon>create</Icon>
         </ListItemIcon>
         <ListItemText primary="Create Event" />
       </ListItem>
@@ -39,16 +34,17 @@ const DrawerList = ({ classes }) =>
     <Divider />
     <ListItem button>
       <ListItemIcon>
-        <InboxIcon />
+        <Icon>inbox</Icon>
       </ListItemIcon>
       <ListItemText primary="Inbox" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <InfoOutlineIcon />
+        <Icon>info_outline</Icon>
       </ListItemIcon>
       <ListItemText primary="About" />
     </ListItem>
   </List>
+)
 
 export default withStyles(styles)(DrawerList)
