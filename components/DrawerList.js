@@ -20,7 +20,7 @@ const DrawerList = ({ classes }) => (
         <ListItemIcon>
           <Icon>list</Icon>
         </ListItemIcon>
-        <ListItemText primary="Events List" />``
+        <ListItemText primary="Events List" />
       </ListItem>
     </Link>
     <Link href="create" prefetch>

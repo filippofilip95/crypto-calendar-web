@@ -11,8 +11,7 @@ export const createEvent = gql`
     $title: String!
     $cryptoCoinId: ID
     $cryptoCoin: EventcryptoCoinCryptoCoin
-    $imageProofId: ID
-    $imageProof: EventimageProofImageProof
+    $fileId: ID!
   ) {
     createEvent(
       category: $category
@@ -24,8 +23,7 @@ export const createEvent = gql`
       title: $title
       cryptoCoinId: $cryptoCoinId
       cryptoCoin: $cryptoCoin
-      imageProofId: $imageProofId
-      imageProof: $imageProof
+      fileId: $fileId
     ) {
       id
     }

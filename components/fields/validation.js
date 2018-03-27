@@ -7,3 +7,8 @@ export const email = value =>
 
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined
+
+export const maxKbSize = max => value =>
+  value && value.size / 1024 > max
+    ? `Image size is too big. Maximum image size is 1MB`
+    : undefined

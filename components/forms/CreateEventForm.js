@@ -19,12 +19,13 @@ import AutoCompleteField from '../fields/AutoCompleteField'
 import DatePickerField from '../fields/DatePickerField'
 
 // validation
-import { required, email, minLength } from '../fields/validation'
+import { required, email, minLength, maxKbSize } from '../fields/validation'
 
 // constants
 import { TIMES_24_MODE, EVENT_CATEGORIES } from '../../lib/constants'
 
 const minLength10 = minLength(10)
+const maxKbSize1024 = maxKbSize(1024)
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -173,6 +174,8 @@ const CreateEventForm = props => {
               }}
               required
               component={ImageField}
+              helperText="Maximum image size is 1MB"
+              validate={[required, maxKbSize1024]}
             />
             <Button
               variant="raised"

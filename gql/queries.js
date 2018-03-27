@@ -31,6 +31,12 @@ export const allEvents = gql`
       }
       description
       source
+      file {
+        id
+        url
+        name
+        createdAt
+      }
     }
   }
 `
