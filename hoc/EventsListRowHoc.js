@@ -1,18 +1,31 @@
 import { compose, withState, withHandlers, withProps } from 'recompose'
 import { compose as apolloCompose, graphql } from 'react-apollo'
+import { connect } from 'react-redux'
+
+// actions
+import AppActions from '../store/appReducer'
 
 // components
 import EventsListRow from '../components/EventsListRow'
 
 const withStates = withState('expanded', 'setExpanded', false)
 
+const mapStateToProps = state => ({
+  galleryVisible: state.appReducer.galleryVisible,
+  galleryImageUrl: state.appReducer.galleryImageUrl
+})
+
+const mapDispatchToProps = {
+  ...AppActions
+}
+
 const withMethods = withHandlers({
   togglePanel: ({ setExpanded, expanded }) => () => {
     setExpanded(!expanded)
   },
-  showImageProof: () => e => {
+  showImageProof: ({ onShowGallery, event }) => e => {
     e.stopPropagation()
-    console.log('show image proof')
+    onShowGallery(event)
   },
   createAlert: () => e => {
     e.stopPropagation()
@@ -24,4 +37,8 @@ const withMethods = withHandlers({
   }
 })
 
-export default compose(withStates, withMethods)(EventsListRow)
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStates,
+  withMethods
+)(EventsListRow)

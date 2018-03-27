@@ -33,8 +33,8 @@ export const allEvents = gql`
       source
       file {
         id
-        url
         name
+        secret
         createdAt
       }
     }

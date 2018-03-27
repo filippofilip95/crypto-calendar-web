@@ -22,7 +22,8 @@ const TooltipButton = ({
   placement = 'bottom',
   color = 'inherit',
   buttonSize = 48,
-  classes
+  classes,
+  ...rest
 }) => (
   <Tooltip id={id} title={title} placement={placement}>
     <IconButton
@@ -30,6 +31,7 @@ const TooltipButton = ({
       color={color}
       onClick={onClick}
       className={classes.tooltipButton}
+      {...rest}
     >
       <Icon>{iconName}</Icon>
     </IconButton>
@@ -45,7 +47,8 @@ TooltipButton.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   buttonSize: PropTypes.number,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  rest: PropTypes.object
 }
 
 export default withStyles(styles)(TooltipButton)

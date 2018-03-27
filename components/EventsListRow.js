@@ -88,6 +88,8 @@ const EventsListRow = ({
                 iconName="open_in_new"
                 color="secondary"
                 buttonSize={35}
+                href={event.source}
+                target="_newtab"
               />
               <TooltipButton
                 id="tooltip-create-alert"
