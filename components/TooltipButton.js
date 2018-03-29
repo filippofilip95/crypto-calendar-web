@@ -22,18 +22,20 @@ const TooltipButton = ({
   placement = 'bottom',
   color = 'inherit',
   buttonSize = 48,
+  iconSize,
   classes,
+  style,
   ...rest
 }) => (
   <Tooltip id={id} title={title} placement={placement}>
     <IconButton
-      style={{ height: buttonSize, width: buttonSize }}
+      style={{ height: buttonSize, width: buttonSize, ...style }}
       color={color}
       onClick={onClick}
       className={classes.tooltipButton}
       {...rest}
     >
-      <Icon>{iconName}</Icon>
+      <Icon style={{ fontSize: iconSize }}>{iconName}</Icon>
     </IconButton>
   </Tooltip>
 )
@@ -48,7 +50,9 @@ TooltipButton.propTypes = {
   size: PropTypes.string,
   buttonSize: PropTypes.number,
   classes: PropTypes.object,
-  rest: PropTypes.object
+  rest: PropTypes.object,
+  iconSize: PropTypes.number,
+  style: PropTypes.object
 }
 
 export default withStyles(styles)(TooltipButton)

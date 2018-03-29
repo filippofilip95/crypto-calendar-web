@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const allEvents = gql`
   query allEvents(
@@ -23,23 +23,23 @@ export const allEvents = gql`
       date
       title
       category
+      description
+      source
+      createdAt
       cryptoCoin {
         id
         fullName
         imageUrl
         symbol
       }
-      description
-      source
       file {
         id
         name
         secret
-        createdAt
       }
     }
   }
-`
+`;
 
 export const allCryptoCoins = gql`
   query allCryptoCoins(
@@ -65,4 +65,4 @@ export const allCryptoCoins = gql`
       fullName
     }
   }
-`
+`;

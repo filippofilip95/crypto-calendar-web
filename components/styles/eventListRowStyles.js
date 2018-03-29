@@ -10,8 +10,7 @@ export default theme => ({
   centeredRow: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    alignItems: 'center'
   },
   coinName: {
     paddingLeft: theme.spacing.unit * 2
@@ -30,5 +29,11 @@ export default theme => ({
     '&:hover $actionButtons': {
       display: 'flex'
     }
+  },
+  eventAddedDate: {
+    marginTop: theme.spacing.unit
+  },
+  eventDetails: {
+    paddingRight: theme.spacing.unit * 6
   }
 })

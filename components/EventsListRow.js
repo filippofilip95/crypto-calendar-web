@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { format } from 'date-fns'
 
 // ui
 import Paper from 'material-ui/Paper'
@@ -59,7 +60,12 @@ const EventsListRow = ({
           </div>
         </Grid>
         <Grid item xs={7} md={9} zeroMinWidth>
-          <div className={classes.centeredRow}>
+          <div
+            className={classes.centeredRow}
+            style={{
+              justifyContent: 'space-between'
+            }}
+          >
             <Typography variant="body2" noWrap>
               {event.title}
               {!expanded && (
@@ -104,22 +110,26 @@ const EventsListRow = ({
       </Grid>
     </ExpansionPanelSummary>
     <Divider />
-    <ExpansionPanelDetails>
+    <ExpansionPanelDetails
+      classes={{
+        root: classes.eventDetails
+      }}
+    >
       <Grid container>
-        <Grid item xs={5} md={3} />
+        <Grid item xs={5} md={3}>
+          <Typography variant="body2">{event.category}</Typography>
+          <Typography variant="body1">
+            {`${format(event.date, 'Do MMMM YYYY')}`}
+          </Typography>
+          <Typography variant="caption" className={classes.eventAddedDate}>
+            {`Added: ${format(event.createdAt, 'Do MMMM YYYY')}`}
+          </Typography>
+        </Grid>
         <Grid item xs={7} md={9}>
           <Typography variant="body1">{event.description}</Typography>
         </Grid>
       </Grid>
     </ExpansionPanelDetails>
-    <ExpansionPanelActions>
-      <Button size="small" color="primary">
-        Create ALert
-      </Button>
-      <Button size="small" color="secondary">
-        View Source
-      </Button>
-    </ExpansionPanelActions>
   </ExpansionPanel>
 )
 
