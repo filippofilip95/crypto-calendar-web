@@ -1,25 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { branch, renderComponent } from 'recompose'
+import groupby from 'lodash.groupby'
+import { startOfDay } from 'date-fns'
 
 // ui
 import { withStyles } from 'material-ui/styles'
+import Typography from 'material-ui/Typography'
 
-// compoentns
+// utils
+import { getFormattedDate } from '../lib/utils'
+
+// components
 import EventsListRow from '../hoc/EventsListRowHoc'
 
-const styles = theme => ({
-  root: {
-    minWidth: 0,
-    flexGrow: 1
-  }
-})
+// styles
+import styles from './styles/eventListStyles'
 
-const EventsList = ({ allEvents = [], classes }) => (
-  <div className={classes.root}>
-    {allEvents.map(event => <EventsListRow key={event.id} event={event} />)}
-  </div>
-)
+const EventsList = ({ allEvents = [], classes }) => {
+  const groupedEvents = groupby(allEvents, item => startOfDay(item.date))
+  const dateKeys = Object.keys(groupedEvents)
+
+  const events = dateKeys.map(eventDate => (
+    <div className={classes.eventListGroup}>
+      <Typography variant="body1" className={classes.eventListDate}>
+        {getFormattedDate(eventDate)}
+      </Typography>
+      {groupedEvents[eventDate].map(event => (
+        <EventsListRow key={event.id} event={event} />
+      ))}
+    </div>
+  ))
+
+  return <div className={classes.root}>{events}</div>
+}
 
 EventsList.propTypes = {
   classes: PropTypes.object.isRequired,
