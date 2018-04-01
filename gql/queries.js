@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const allEvents = gql`
   query allEvents(
@@ -20,7 +20,13 @@ export const allEvents = gql`
       last: $last
     ) {
       id
-      date
+      startDate
+      date {
+        startDate
+        endDate
+        isAllDay
+        isEstimatedTime
+      }
       title
       category
       description
@@ -39,7 +45,7 @@ export const allEvents = gql`
       }
     }
   }
-`;
+`
 
 export const allCryptoCoins = gql`
   query allCryptoCoins(
@@ -65,4 +71,4 @@ export const allCryptoCoins = gql`
       fullName
     }
   }
-`;
+`

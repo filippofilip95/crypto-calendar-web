@@ -18,11 +18,11 @@ import EventsListRow from '../hoc/EventsListRowHoc'
 import styles from './styles/eventListStyles'
 
 const EventsList = ({ allEvents = [], classes }) => {
-  const groupedEvents = groupby(allEvents, item => startOfDay(item.date))
+  const groupedEvents = groupby(allEvents, item => startOfDay(item.startDate))
   const dateKeys = Object.keys(groupedEvents)
 
   const events = dateKeys.map(eventDate => (
-    <div className={classes.eventListGroup}>
+    <div className={classes.eventListGroup} key={eventDate}>
       <Typography variant="body1" className={classes.eventListDate}>
         {getFormattedDate(eventDate)}
       </Typography>

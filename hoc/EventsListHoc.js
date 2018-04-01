@@ -14,9 +14,9 @@ const withData = apolloCompose(
     options: () => ({
       variables: {
         first: 100,
-        orderBy: 'date_ASC',
+        orderBy: 'startDate_ASC',
         filter: {
-          date_gte: startOfDay(new Date())
+          startDate_gte: startOfDay(new Date())
         }
       }
     }),

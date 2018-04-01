@@ -1,5 +1,6 @@
 import { compose, withProps, withState, withPropsOnChange } from 'recompose'
-import { reduxForm } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
+import { connect } from 'react-redux'
 import { graphql, compose as apolloCompose } from 'react-apollo'
 import debounce from 'lodash.debounce'
 
@@ -52,6 +53,7 @@ const withData = apolloCompose(
           const file = await response.json()
           variables.fileId = file.id
 
+          console.log(variables)
           await mutate({
             variables
           })
@@ -66,8 +68,21 @@ const withData = apolloCompose(
   })
 )
 
+const selector = formValueSelector('createEventForm')
+
+const mapStateToProps = state => ({
+  minEndDate: selector(state, 'startDate'),
+  maxStartDate: selector(state, 'endDate'),
+  eventIsAllDay: selector(state, 'isAllDay')
+})
+
 const withReduxForm = reduxForm({
   form: 'createEventForm'
 })
 
-export default compose(withInit, withData, withReduxForm)(createEventForm)
+export default compose(
+  withInit,
+  withData,
+  withReduxForm,
+  connect(mapStateToProps)
+)(createEventForm)

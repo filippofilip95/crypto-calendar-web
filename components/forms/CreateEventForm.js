@@ -17,6 +17,7 @@ import SelectField from '../fields/SelectField'
 import ImageField from '../fields/ImageField'
 import AutoCompleteField from '../fields/AutoCompleteField'
 import DatePickerField from '../fields/DatePickerField'
+import CheckBoxField from '../fields/CheckBoxField'
 
 // validation
 import { required, email, minLength, maxKbSize } from '../fields/validation'
@@ -51,7 +52,10 @@ const CreateEventForm = props => {
     allCryptoCoins = [],
     setCoinsFilter,
     loading,
-    mutationLoading
+    mutationLoading,
+    minEndDate,
+    maxStartDate,
+    eventIsAllDay
   } = props
   return (
     <Paper className={classes.root} elevation={4}>
@@ -118,28 +122,39 @@ const CreateEventForm = props => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Field
-              name="date"
-              label="Date"
+              fullWidth
+              name="startDate"
+              label="Starts On"
               required
               component={DatePickerField}
               validate={[required]}
               helperText="Enter date when event starts"
+              ampm={false}
+              disablePast
+              maxDate={!eventIsAllDay && maxStartDate}
             />
+            <Field
+              name="isEstimatedTime"
+              label="Estimated time"
+              component={CheckBoxField}
+            />
+            <Field name="isAllDay" label="All Day" component={CheckBoxField} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Field
-              fullWidth
-              name="time"
-              label="Time"
-              required
-              component={SelectField}
-              validate={[required]}
-              helperText="Set time in UTC"
-            >
-              {TIMES_24_MODE.map(time => (
-                <MenuItem value={time} key={time} children={time} />
-              ))}
-            </Field>
+            {!eventIsAllDay && (
+              <Field
+                fullWidth
+                name="endDate"
+                label="Ends On"
+                required
+                component={DatePickerField}
+                validate={[required]}
+                helperText="Enter date when event ends"
+                ampm={false}
+                disablePast
+                minDate={minEndDate}
+              />
+            )}
           </Grid>
           <Grid item xs={12} sm={6}>
             <Field

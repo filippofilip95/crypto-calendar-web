@@ -117,9 +117,12 @@ const EventsListRow = ({
     >
       <Grid container>
         <Grid item xs={5} md={3}>
+          {console.log(event.date)}
           <Typography variant="body2">{event.category}</Typography>
           <Typography variant="body1">
-            {`${format(event.date, 'Do MMMM YYYY')}`}
+            {`${format(event.date.startDate, 'Do MMMM HH:mm')}`}
+            {event.date.endDate &&
+              ` - ${format(event.date.endDate, 'Do MMMM HH:mm')}`}
           </Typography>
           <Typography variant="caption" className={classes.eventAddedDate}>
             {`Added: ${format(event.createdAt, 'Do MMMM YYYY')}`}
