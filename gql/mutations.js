@@ -14,6 +14,7 @@ export const createEvent = gql`
     $endDate: DateTime
     $isAllDay: Boolean
     $isEstimatedTime: Boolean
+    $isUnkownEndDate: Boolean
   ) {
     createEvent(
       category: $category
@@ -23,6 +24,7 @@ export const createEvent = gql`
         endDate: $endDate
         isAllDay: $isAllDay
         isEstimatedTime: $isEstimatedTime
+        isUnkownEndDate: $isUnkownEndDate
       }
       description: $description
       email: $email

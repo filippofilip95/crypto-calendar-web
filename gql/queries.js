@@ -26,6 +26,7 @@ export const allEvents = gql`
         endDate
         isAllDay
         isEstimatedTime
+        isUnkownEndDate
       }
       title
       category

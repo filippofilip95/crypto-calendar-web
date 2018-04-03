@@ -70,10 +70,33 @@ const withData = apolloCompose(
 
 const selector = formValueSelector('createEventForm')
 
+const maxStartDateSelector = state => {
+  const { endDate, isAllDay, isUnkownEndDate } = selector(
+    state,
+    'endDate',
+    'isAllDay',
+    'isUnkownEndDate'
+  )
+  if (isUnkownEndDate || isAllDay) {
+    return undefined
+  } else {
+    return endDate
+  }
+}
+
+const visibleEndDateFieldSelector = state => {
+  const { isAllDay, isUnkownEndDate } = selector(
+    state,
+    'isAllDay',
+    'isUnkownEndDate'
+  )
+  return !(isUnkownEndDate || isAllDay)
+}
+
 const mapStateToProps = state => ({
   minEndDate: selector(state, 'startDate'),
-  maxStartDate: selector(state, 'endDate'),
-  eventIsAllDay: selector(state, 'isAllDay')
+  maxStartDate: maxStartDateSelector(state),
+  visibleEndDateField: visibleEndDateFieldSelector(state)
 })
 
 const withReduxForm = reduxForm({

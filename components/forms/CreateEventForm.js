@@ -53,10 +53,11 @@ const CreateEventForm = props => {
     setCoinsFilter,
     loading,
     mutationLoading,
-    minEndDate,
     maxStartDate,
-    eventIsAllDay
+    minEndDate,
+    visibleEndDateField
   } = props
+
   return (
     <Paper className={classes.root} elevation={4}>
       {(loading || mutationLoading) && (
@@ -131,17 +132,22 @@ const CreateEventForm = props => {
               helperText="Enter date when event starts"
               ampm={false}
               disablePast
-              maxDate={!eventIsAllDay && maxStartDate}
+              maxDate={maxStartDate}
+            />
+            <Field name="isAllDay" label="All day" component={CheckBoxField} />
+            <Field
+              name="isUnkownEndDate"
+              label="Unknown end date"
+              component={CheckBoxField}
             />
             <Field
               name="isEstimatedTime"
               label="Estimated time"
               component={CheckBoxField}
             />
-            <Field name="isAllDay" label="All Day" component={CheckBoxField} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            {!eventIsAllDay && (
+            {visibleEndDateField && (
               <Field
                 fullWidth
                 name="endDate"

@@ -1,29 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { format } from 'date-fns'
 
 // ui
-import Paper from 'material-ui/Paper'
-import { withStyles, typography } from 'material-ui/styles'
-import Grid from 'material-ui/Grid'
-import Avatar from 'material-ui/Avatar'
-import Typography from 'material-ui/Typography'
+import { withStyles } from 'material-ui/styles'
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   ExpansionPanelActions
 } from 'material-ui/ExpansionPanel'
 import Icon from 'material-ui/Icon'
-import Button from 'material-ui/Button'
-import IconButton from 'material-ui/IconButton'
 import Divider from 'material-ui/Divider'
-import Tooltip from 'material-ui/Tooltip'
 
 // components
-import TooltipButton from './TooltipButton'
-
-// constants
-import { IMG_URL_PREFIX } from '../lib/constants'
+import EventsListRowSummary from './EventsListRowSummary'
+import EventsListRowDetails from './EventsListRowDetails'
 
 // styles
 import styles from './styles/eventListRowStyles'
@@ -46,68 +36,15 @@ const EventsListRow = ({
       className={classes.eventSummary}
       expandIcon={<Icon>expand_more</Icon>}
     >
-      <Grid container alignItems="center">
-        <Grid item xs={5} md={3}>
-          <div className={classes.centeredRow}>
-            <Avatar
-              alt={event.cryptoCoin.symbol}
-              src={`${IMG_URL_PREFIX}${event.cryptoCoin.imageUrl}`}
-              className={classes.coinImage}
-            />
-            <Typography className={classes.coinName} variant="subheading">
-              {event.cryptoCoin.fullName}
-            </Typography>
-          </div>
-        </Grid>
-        <Grid item xs={7} md={9} zeroMinWidth>
-          <div
-            className={classes.centeredRow}
-            style={{
-              justifyContent: 'space-between'
-            }}
-          >
-            <Typography variant="body2" noWrap>
-              {event.title}
-              {!expanded && (
-                <span className={classes.eventDesciption}>
-                  {` -  ${event.description}`}
-                </span>
-              )}
-            </Typography>
-            <div
-              className={
-                expanded ? classes.actionButtonsExpanded : classes.actionButtons
-              }
-            >
-              <TooltipButton
-                id="tooltip-image-proof"
-                title="Show Image Proof"
-                onClick={showImageProof}
-                iconName="photo"
-                color="primary"
-                buttonSize={35}
-              />
-              <TooltipButton
-                id="tooltip-open-source-link"
-                title="Open Source Link"
-                onClick={openSourceLink}
-                iconName="open_in_new"
-                color="secondary"
-                buttonSize={35}
-                href={event.source}
-                target="_newtab"
-              />
-              <TooltipButton
-                id="tooltip-create-alert"
-                title="Create Alert"
-                onClick={createAlert}
-                iconName="add_alert"
-                buttonSize={35}
-              />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+      <EventsListRowSummary
+        event={event}
+        expanded={expanded}
+        classes={classes}
+        togglePanel={togglePanel}
+        showImageProof={showImageProof}
+        createAlert={createAlert}
+        openSourceLink={openSourceLink}
+      />
     </ExpansionPanelSummary>
     <Divider />
     <ExpansionPanelDetails
@@ -115,30 +52,19 @@ const EventsListRow = ({
         root: classes.eventDetails
       }}
     >
-      <Grid container>
-        <Grid item xs={5} md={3}>
-          {console.log(event.date)}
-          <Typography variant="body2">{event.category}</Typography>
-          <Typography variant="body1">
-            {`${format(event.date.startDate, 'Do MMMM HH:mm')}`}
-            {event.date.endDate &&
-              ` - ${format(event.date.endDate, 'Do MMMM HH:mm')}`}
-          </Typography>
-          <Typography variant="caption" className={classes.eventAddedDate}>
-            {`Added: ${format(event.createdAt, 'Do MMMM YYYY')}`}
-          </Typography>
-        </Grid>
-        <Grid item xs={7} md={9}>
-          <Typography variant="body1">{event.description}</Typography>
-        </Grid>
-      </Grid>
+      <EventsListRowDetails event={event} classes={classes} />
     </ExpansionPanelDetails>
   </ExpansionPanel>
 )
 
 EventsListRow.propTypes = {
   classes: PropTypes.object.isRequired,
-  event: PropTypes.object.isRequired
+  event: PropTypes.object.isRequired,
+  expanded: PropTypes.bool.isRequired,
+  togglePanel: PropTypes.func.isRequired,
+  showImageProof: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
+  openSourceLink: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(EventsListRow)
