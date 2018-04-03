@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 // ui
@@ -19,7 +18,7 @@ const Drawer = ({ drawerVisible, handleCloseDrawer }) => {
 
 Drawer.propTypes = {
   drawerVisible: PropTypes.bool.isRequired,
-  handleCloseDrawer: PropTypes.func.isRequired,
+  handleCloseDrawer: PropTypes.func.isRequired
 }
 
 export default Drawer

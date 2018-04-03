@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { branch, renderComponent } from 'recompose'
 import groupby from 'lodash.groupby'

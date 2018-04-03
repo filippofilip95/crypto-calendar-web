@@ -1,5 +1,3 @@
-import React from 'react'
-
 // utils
 import { withStyles } from 'material-ui/styles'
 

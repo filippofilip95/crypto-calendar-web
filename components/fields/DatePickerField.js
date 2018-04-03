@@ -1,8 +1,4 @@
-import React from 'react'
 import { DateTimePicker } from 'material-ui-pickers'
-
-// ui
-import { withStyles } from 'material-ui/styles/index'
 
 const DatePickerField = props => {
   const { meta: { error, touched }, helperText, input, ...rest } = props
@@ -19,4 +15,4 @@ const DatePickerField = props => {
   )
 }
 
-export default withStyles()(DatePickerField)
+export default DatePickerField
