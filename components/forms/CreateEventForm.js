@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import { withStyles } from 'material-ui/styles'
+import { url, required, email, length, file } from 'redux-form-validators'
 
 // ui
 import Paper from 'material-ui/Paper'
@@ -19,14 +20,8 @@ import AutoCompleteField from '../fields/AutoCompleteField'
 import DatePickerField from '../fields/DatePickerField'
 import CheckBoxField from '../fields/CheckBoxField'
 
-// validation
-import { required, email, minLength, maxKbSize } from '../fields/validation'
-
 // constants
-import { TIMES_24_MODE, EVENT_CATEGORIES } from '../../lib/constants'
-
-const minLength10 = minLength(10)
-const maxKbSize1024 = maxKbSize(1024)
+import { EVENT_CATEGORIES } from '../../lib/constants'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -76,7 +71,7 @@ const CreateEventForm = props => {
               label="Title"
               required
               component={TextField}
-              validate={[required, minLength10]}
+              validate={[required(), length({ minimum: 10 })]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -91,7 +86,7 @@ const CreateEventForm = props => {
               labelKey="fullName"
               simpleValue
               onInputChange={value => setCoinsFilter(value)}
-              validate={[required]}
+              validate={[required()]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -100,7 +95,7 @@ const CreateEventForm = props => {
               name="category"
               label="Category"
               component={SelectField}
-              validate={[required]}
+              validate={[required()]}
             >
               {EVENT_CATEGORIES.map(({ name, value }) => (
                 <MenuItem value={value} key={value}>
@@ -118,7 +113,7 @@ const CreateEventForm = props => {
               required
               multiline
               component={TextField}
-              validate={[required, minLength10]}
+              validate={[required(), length({ minimum: 10 })]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -128,7 +123,7 @@ const CreateEventForm = props => {
               label="Starts On"
               required
               component={DatePickerField}
-              validate={[required]}
+              validate={[required()]}
               helperText="Enter date when event starts"
               ampm={false}
               disablePast
@@ -154,7 +149,7 @@ const CreateEventForm = props => {
                 label="Ends On"
                 required
                 component={DatePickerField}
-                validate={[required]}
+                validate={[required()]}
                 helperText="Enter date when event ends"
                 ampm={false}
                 disablePast
@@ -171,7 +166,7 @@ const CreateEventForm = props => {
               multiline
               component={TextField}
               margin="normal"
-              validate={[required, minLength10]}
+              validate={[required(), url({ protocols: ['http', 'https'] })]}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -181,7 +176,7 @@ const CreateEventForm = props => {
               label="Email"
               component={TextField}
               margin="normal"
-              validate={[email]}
+              validate={[email({ allowBlank: true })]}
             />
           </Grid>
           <Grid item xs={12}>
@@ -196,7 +191,7 @@ const CreateEventForm = props => {
               required
               component={ImageField}
               helperText="Maximum image size is 1MB"
-              validate={[required, maxKbSize1024]}
+              validate={[required(), file({ maxSize: '1 MB' })]}
             />
             <Button
               variant="raised"

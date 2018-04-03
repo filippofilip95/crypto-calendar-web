@@ -1,38 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import Lightbox from 'react-image-lightbox';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { format } from 'date-fns'
+import Lightbox from 'react-image-lightbox'
 
 // ui
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Modal from 'material-ui/Modal';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import Avatar from 'material-ui/Avatar';
-import Icon from 'material-ui/Icon';
+import { withStyles } from 'material-ui/styles'
+import Typography from 'material-ui/Typography'
+import Modal from 'material-ui/Modal'
+import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
+import Avatar from 'material-ui/Avatar'
+import Icon from 'material-ui/Icon'
 import Card, {
   CardHeader,
   CardMedia,
   CardContent,
-  CardActions,
-} from 'material-ui/Card';
+  CardActions
+} from 'material-ui/Card'
 
 // components
-import TooltipButton from './TooltipButton';
+import TooltipButton from './TooltipButton'
 
 // styles
-import styles from './styles/galleryModalStyles';
+import styles from './styles/galleryModalStyles'
 
 // constants
-import { IMG_URL_PREFIX } from '../lib/constants';
-import ENV from '../env';
+import { IMG_URL_PREFIX } from '../lib/constants'
+import ENV from '../env'
 
 const GalleryModal = ({
   galleryVisible,
   handleHideGallery,
   classes,
-  activeGalleryEvent,
+  activeGalleryEvent
 }) =>
   galleryVisible && (
     <Lightbox
@@ -66,7 +66,7 @@ const GalleryModal = ({
           style={{ color: 'white' }}
           buttonSize={35}
           iconSize={30}
-        />,
+        />
       ]}
       imageTitle={
         <div className={classes.lightboxHeader}>
@@ -82,7 +82,15 @@ const GalleryModal = ({
               }`}
             </Typography>
             <Typography variant="caption" className={classes.headerText}>
-              {`${format(activeGalleryEvent.date, 'Do MMMM YYYY H:m')}`}
+              {`${format(
+                activeGalleryEvent.date.startDate,
+                'Do MMMM YYYY H:mm'
+              )}`}
+              {activeGalleryEvent.date.endDate &&
+                ` - ${format(
+                  activeGalleryEvent.date.endDate,
+                  'Do MMMM YYYY H:mm'
+                )}`}
             </Typography>
           </div>
         </div>
@@ -95,11 +103,11 @@ const GalleryModal = ({
         </div>
       }
     />
-  );
+  )
 
 GalleryModal.propTypes = {
   classes: PropTypes.object.isRequired,
-  galleryVisible: PropTypes.bool.isRequired,
-};
+  galleryVisible: PropTypes.bool.isRequired
+}
 
-export default withStyles(styles)(GalleryModal);
+export default withStyles(styles)(GalleryModal)

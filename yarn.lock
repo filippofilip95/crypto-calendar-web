@@ -4246,6 +4246,10 @@ redux-form-material-ui@^5.0.0-beta.2:
   version "5.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/redux-form-material-ui/-/redux-form-material-ui-5.0.0-beta.2.tgz#4a9186d0a6216fbb5871b07156fb0e7f591fb3e8"
 
+redux-form-validators@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/redux-form-validators/-/redux-form-validators-2.4.3.tgz#09392fcc86facb3823a309c7e4ab7856f803ce6c"
+
 redux-form@^7.2.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.2.3.tgz#a01111116f386f3d88451b5528dfbb180561a8b4"
