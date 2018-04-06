@@ -1,4 +1,4 @@
-import withInit from '../lib/withInit'
+import withRoot from '../lib/withRoot'
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 
@@ -6,7 +6,7 @@ import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsPr
 import Layout from '../hoc/LayoutHoc'
 import CreateEventFrom from '../hoc/forms/CreateEventFormHoc'
 
-export default withInit(() => (
+export default withRoot(() => (
   <Layout>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <CreateEventFrom />
