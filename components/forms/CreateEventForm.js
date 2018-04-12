@@ -54,14 +54,12 @@ const CreateEventForm = props => {
 
   return (
     <Paper className={classes.root} elevation={4}>
-      {(loading || mutationLoading) && (
-        <LinearProgress className={classes.linearProgress} />
-      )}
+      {mutationLoading && <LinearProgress className={classes.linearProgress} />}
       <Typography variant="headline" color="inherit">
         Add Crypto Event
       </Typography>
       <form onSubmit={handleSubmit}>
-        <Grid container>
+        <Grid container spacing={16}>
           <Grid item xs={12}>
             <Field
               fullWidth

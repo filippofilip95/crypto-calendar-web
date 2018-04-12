@@ -1,5 +1,11 @@
-import { compose, withProps, withState, withPropsOnChange } from 'recompose'
-import { reduxForm, formValueSelector } from 'redux-form'
+import {
+  compose,
+  withProps,
+  withState,
+  withPropsOnChange,
+  withHandlers
+} from 'recompose'
+import { reduxForm, formValueSelector, reset } from 'redux-form'
 import { connect } from 'react-redux'
 import { graphql, compose as apolloCompose } from 'react-apollo'
 import debounce from 'lodash.debounce'
@@ -9,7 +15,8 @@ import { allCryptoCoins } from '../../gql/queries'
 import { createEvent } from '../../gql/mutations'
 
 // components
-import createEventForm from '../../components/forms/CreateEventForm'
+import CreateEventForm from '../../components/forms/CreateEventForm'
+import { withSnackbar } from '../../components/SnackBar'
 
 import ENV from '../../env'
 
@@ -38,7 +45,7 @@ const withData = apolloCompose(
     })
   }),
   graphql(createEvent, {
-    props: ({ mutate, ownProps: { setMutationLoading } }) => ({
+    props: ({ mutate, ownProps: { setMutationLoading, showSnackbar } }) => ({
       onSubmit: async variables => {
         try {
           setMutationLoading(true)
@@ -59,6 +66,11 @@ const withData = apolloCompose(
           })
 
           setMutationLoading(false)
+
+          showSnackbar({
+            message:
+              "Event successfully created. It'll be visible after confirmation."
+          })
         } catch (e) {
           console.log(e)
           setMutationLoading(false)
@@ -67,6 +79,14 @@ const withData = apolloCompose(
     })
   })
 )
+
+const withMethods = withHandlers({
+  onSubmitFail: ({ showSnackbar }) => () => {
+    showSnackbar({
+      message: 'Inputs validation failed. Please correct the red fields.'
+    })
+  }
+})
 
 const selector = formValueSelector('createEventForm')
 
@@ -100,12 +120,15 @@ const mapStateToProps = state => ({
 })
 
 const withReduxForm = reduxForm({
-  form: 'createEventForm'
+  form: 'createEventForm',
+  onSubmitSuccess: (_, dispatch) => dispatch(reset('createEventForm'))
 })
 
 export default compose(
+  withSnackbar,
   withInit,
   withData,
+  withMethods,
   withReduxForm,
   connect(mapStateToProps)
-)(createEventForm)
+)(CreateEventForm)
