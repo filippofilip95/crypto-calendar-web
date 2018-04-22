@@ -25,7 +25,6 @@ import styles from './styles/galleryModalStyles'
 
 // constants
 import { IMG_URL_PREFIX } from '../lib/constants'
-import ENV from '../env'
 
 const GalleryModal = ({
   galleryVisible,
@@ -35,7 +34,7 @@ const GalleryModal = ({
 }) =>
   galleryVisible && (
     <Lightbox
-      mainSrc={`${ENV.IMAGE_URL}${activeGalleryEvent.file.secret}/x500`}
+      mainSrc={`${process.env.IMAGE_URL}${activeGalleryEvent.file.secret}/x500`}
       onCloseRequest={handleHideGallery}
       animationDuration={100}
       hideToolbarButtons

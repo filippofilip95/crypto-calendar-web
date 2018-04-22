@@ -3053,6 +3053,10 @@ normalize-scroll-left@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-scroll-left/-/normalize-scroll-left-0.1.2.tgz#6b79691ba79eb5fb107fa5edfbdc06b55caee2aa"
 
+now-env@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/now-env/-/now-env-3.0.4.tgz#f9ed88884bff8d208ad3eaf39cc3437dd1a591ad"
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -3493,9 +3497,9 @@ react-hot-loader@4.0.0:
     prop-types "^15.6.0"
     shallowequal "^1.0.2"
 
-"react-image-lightbox@https://github.com/filippofilip95/react-image-lightbox":
+react-image-lightbox@filippofilip95/react-image-lightbox#builded:
   version "4.6.0"
-  resolved "https://github.com/filippofilip95/react-image-lightbox#eff9cddff6e505ea7c800cf85f88da65bc066015"
+  resolved "https://codeload.github.com/filippofilip95/react-image-lightbox/tar.gz/496dccf90c47a9cf6746068d5749cd4abacab847"
   dependencies:
     prop-types "^15.5.8"
     react-modal "^3.1.10"

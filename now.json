@@ -1,0 +1,7 @@
+{
+  "env": {
+    "GRAPHQL_URL": "@graphql-url",
+    "FILE_UPLOAD_URL": "@file-upload-url",
+    "IMAGE_URL": "@image-url"
+  }
+}

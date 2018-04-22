@@ -18,8 +18,6 @@ import { createEvent } from '../../gql/mutations'
 import CreateEventForm from '../../components/forms/CreateEventForm'
 import { withSnackbar } from '../../components/SnackBar'
 
-import ENV from '../../env'
-
 const withInit = compose(
   withState('mutationLoading', 'setMutationLoading', false),
   withState('coinsFilter', 'setCoinsFilter', ''),
@@ -53,7 +51,7 @@ const withData = apolloCompose(
           let data = new FormData()
           data.append('data', variables.imageProof)
 
-          const response = await fetch(ENV.FILE_UPLOAD_URL, {
+          const response = await fetch(process.env.FILE_UPLOAD_URL, {
             method: 'POST',
             body: data
           })
