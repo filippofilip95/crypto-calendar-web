@@ -19,13 +19,10 @@ export const createEvent = gql`
     createEvent(
       category: $category
       startDate: $startDate
-      date: {
-        startDate: $startDate
-        endDate: $endDate
-        isAllDay: $isAllDay
-        isEstimatedTime: $isEstimatedTime
-        isUnkownEndDate: $isUnkownEndDate
-      }
+      endDate: $endDate
+      isAllDay: $isAllDay
+      isEstimatedTime: $isEstimatedTime
+      isUnkownEndDate: $isUnkownEndDate
       description: $description
       email: $email
       isAllowed: $isAllowed

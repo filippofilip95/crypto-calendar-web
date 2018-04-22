@@ -21,13 +21,10 @@ export const allEvents = gql`
     ) {
       id
       startDate
-      date {
-        startDate
-        endDate
-        isAllDay
-        isEstimatedTime
-        isUnkownEndDate
-      }
+      endDate
+      isAllDay
+      isEstimatedTime
+      isUnkownEndDate
       title
       category
       description

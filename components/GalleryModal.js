@@ -81,15 +81,9 @@ const GalleryModal = ({
               }`}
             </Typography>
             <Typography variant="caption" className={classes.headerText}>
-              {`${format(
-                activeGalleryEvent.date.startDate,
-                'Do MMMM YYYY H:mm'
-              )}`}
-              {activeGalleryEvent.date.endDate &&
-                ` - ${format(
-                  activeGalleryEvent.date.endDate,
-                  'Do MMMM YYYY H:mm'
-                )}`}
+              {`${format(activeGalleryEvent.startDate, 'Do MMMM YYYY H:mm')}`}
+              {activeGalleryEvent.endDate &&
+                ` - ${format(activeGalleryEvent.endDate, 'Do MMMM YYYY H:mm')}`}
             </Typography>
           </div>
         </div>

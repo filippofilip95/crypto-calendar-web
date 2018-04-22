@@ -14,12 +14,12 @@ const EventsListRowDetails = ({ event, classes }) => (
       {console.log(event.date)}
       <Typography variant="body2">{event.category}</Typography>
       <Typography variant="body1">
-        Starts: {format(event.date.startDate, 'Do MMMM HH:mm')}
+        Starts: {format(event.startDate, 'Do MMMM HH:mm')}
       </Typography>
-      {event.date.endDate && (
+      {event.endDate && (
         <Typography variant="body1">
           Ends: &nbsp;&nbsp;
-          {format(event.date.endDate, 'Do MMMM HH:mm')}
+          {format(event.endDate, 'Do MMMM HH:mm')}
         </Typography>
       )}
       <Typography variant="caption" className={classes.eventAddedDate}>

@@ -24,6 +24,7 @@ import { EVENT_CATEGORIES } from '../../lib/constants'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
+    marginTop: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 3,
     paddingBottom: theme.spacing.unit * 3,
     position: 'relative'
