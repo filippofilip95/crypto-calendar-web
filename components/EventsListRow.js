@@ -23,8 +23,7 @@ const EventsListRow = ({
   expanded,
   togglePanel,
   showImageProof,
-  createAlert,
-  openSourceLink
+  createAlert
 }) => (
   <ExpansionPanel expanded={expanded}>
     <ExpansionPanelSummary
@@ -42,7 +41,6 @@ const EventsListRow = ({
         togglePanel={togglePanel}
         showImageProof={showImageProof}
         createAlert={createAlert}
-        openSourceLink={openSourceLink}
       />
     </ExpansionPanelSummary>
     <Divider />
@@ -62,8 +60,7 @@ EventsListRow.propTypes = {
   expanded: PropTypes.bool.isRequired,
   togglePanel: PropTypes.func.isRequired,
   showImageProof: PropTypes.func.isRequired,
-  createAlert: PropTypes.func.isRequired,
-  openSourceLink: PropTypes.func.isRequired
+  createAlert: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(EventsListRow)

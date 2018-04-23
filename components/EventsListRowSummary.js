@@ -17,8 +17,7 @@ const EventsListRowSummary = ({
   expanded,
   togglePanel,
   showImageProof,
-  createAlert,
-  openSourceLink
+  createAlert
 }) => (
   <Grid container alignItems="center">
     <Grid item xs={5} md={3}>
@@ -64,7 +63,6 @@ const EventsListRowSummary = ({
           <TooltipButton
             id="tooltip-open-source-link"
             title="Open Source Link"
-            onClick={openSourceLink}
             iconName="open_in_new"
             color="secondary"
             buttonSize={35}
@@ -90,8 +88,7 @@ EventsListRowSummary.propTypes = {
   expanded: PropTypes.bool.isRequired,
   togglePanel: PropTypes.func.isRequired,
   showImageProof: PropTypes.func.isRequired,
-  createAlert: PropTypes.func.isRequired,
-  openSourceLink: PropTypes.func.isRequired
+  createAlert: PropTypes.func.isRequired
 }
 
 export default EventsListRowSummary

@@ -58,7 +58,6 @@ const withData = apolloCompose(
           const file = await response.json()
           variables.fileId = file.id
 
-          console.log(variables)
           await mutate({
             variables
           })

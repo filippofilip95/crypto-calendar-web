@@ -1,7 +1,7 @@
 {
   "env": {
-    "GRAPHQL_URL": "@graphql-url",
-    "FILE_UPLOAD_URL": "@file-upload-url",
-    "IMAGE_URL": "@image-url"
+    "GRAPHQL_URL": "https://api.graph.cool/simple/v1/cjd4ihrul360t0146jgcxdgr0",
+    "FILE_UPLOAD_URL": "https://api.graph.cool/file/v1/cjd4ihrul360t0146jgcxdgr0",
+    "IMAGE_URL": "https://images.graph.cool/v1/cjd4ihrul360t0146jgcxdgr0/"
   }
 }

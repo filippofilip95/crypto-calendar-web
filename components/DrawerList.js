@@ -14,7 +14,7 @@ const styles = {
 
 const DrawerList = ({ classes }) => (
   <List className={classes.list}>
-    <Link href="/" prefetch>
+    <Link href="/">
       <ListItem button>
         <ListItemIcon>
           <Icon>list</Icon>
@@ -22,7 +22,7 @@ const DrawerList = ({ classes }) => (
         <ListItemText primary="Events List" />
       </ListItem>
     </Link>
-    <Link href="create" prefetch>
+    <Link href="create">
       <ListItem button>
         <ListItemIcon>
           <Icon>create</Icon>

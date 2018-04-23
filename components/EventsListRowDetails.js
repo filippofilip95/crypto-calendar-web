@@ -11,7 +11,6 @@ import styles from './styles/eventListRowStyles'
 const EventsListRowDetails = ({ event, classes }) => (
   <Grid container>
     <Grid item xs={5} md={3}>
-      {console.log(event.date)}
       <Typography variant="body2">{event.category}</Typography>
       <Typography variant="body1">
         Starts: {format(event.startDate, 'Do MMMM HH:mm')}

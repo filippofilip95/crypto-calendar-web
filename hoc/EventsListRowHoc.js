@@ -30,10 +30,6 @@ const withMethods = withHandlers({
   createAlert: () => e => {
     e.stopPropagation()
     console.log('create alert')
-  },
-  openSourceLink: () => e => {
-    e.stopPropagation()
-    console.log('open source')
   }
 })
 
