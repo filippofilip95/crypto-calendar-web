@@ -18,6 +18,7 @@ import ImageField from '../fields/ImageField'
 import AutoCompleteField from '../fields/AutoCompleteField'
 import DatePickerField from '../fields/DatePickerField'
 import CheckBoxField from '../fields/CheckBoxField'
+import ReCaptchaField from '../fields/ReCaptchaField'
 
 // constants
 import { EVENT_CATEGORIES } from '../../lib/constants'
@@ -177,7 +178,7 @@ const CreateEventForm = props => {
               validate={[email({ allowBlank: true })]}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <Field
               fullWidth
               name="imageProof"
@@ -191,6 +192,17 @@ const CreateEventForm = props => {
               helperText="Maximum image size is 1MB"
               validate={[required(), file({ maxSize: '1 MB' })]}
             />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              name="cc-recaptcha"
+              label="Human validation"
+              required
+              component={ReCaptchaField}
+              validate={[required()]}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button
               variant="raised"
               color="primary"

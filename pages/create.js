@@ -4,7 +4,7 @@ import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsPr
 
 // containers
 import Layout from '../hoc/LayoutHoc'
-import CreateEventFrom from '../hoc/forms/CreateEventFormHoc'
+import CreateEventForm from '../hoc/forms/CreateEventFormHoc'
 
 // components
 import { SnackBarProvider } from '../components/SnackBar'
@@ -13,7 +13,7 @@ export default withRoot(() => (
   <Layout>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <SnackBarProvider>
-        <CreateEventFrom />
+        <CreateEventForm />
       </SnackBarProvider>
     </MuiPickersUtilsProvider>
   </Layout>

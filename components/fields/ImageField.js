@@ -43,7 +43,9 @@ const ImageField = ({
   }
 
   const handleImageChange = async e => {
-    const { target: { files } } = e
+    const {
+      target: { files }
+    } = e
     try {
       input.onChange(files[0])
     } catch (e) {
@@ -55,7 +57,9 @@ const ImageField = ({
 
   return (
     <div className={classes.imageField}>
-      <InputLabel required={required}>{label}</InputLabel>
+      <InputLabel required={required} error={isError}>
+        {label}
+      </InputLabel>
       <div className={classes.buttonContainer}>
         <Button {...buttonProps} onClick={handlePickImage}>
           {buttonTitle}
