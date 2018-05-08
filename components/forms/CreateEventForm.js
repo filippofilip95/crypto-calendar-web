@@ -19,6 +19,7 @@ import ImageField from '../fields/ImageField'
 import AutoCompleteField from '../fields/AutoCompleteField'
 import DatePickerField from '../fields/DatePickerField'
 import CheckBoxField from '../fields/CheckBoxField'
+import ReCaptchaField from '../fields/ReCaptchaField'
 
 // constants
 import { EVENT_CATEGORIES } from '../../lib/constants'
@@ -179,7 +180,7 @@ const CreateEventForm = props => {
               validate={[email({ allowBlank: true })]}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <Field
               fullWidth
               name="imageProof"
