@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import { withStyles } from 'material-ui/styles'
 import { url, required, email, length, file } from 'redux-form-validators'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 // ui
 import Paper from 'material-ui/Paper'
@@ -50,7 +51,8 @@ const CreateEventForm = props => {
     mutationLoading,
     maxStartDate,
     minEndDate,
-    visibleEndDateField
+    visibleEndDateField,
+    submitIfHuman
   } = props
 
   return (
@@ -191,6 +193,13 @@ const CreateEventForm = props => {
               helperText="Maximum image size is 1MB"
               validate={[required(), file({ maxSize: '1 MB' })]}
             />
+          </Grid>
+          <ReCAPTCHA
+            size="invisible"
+            sitekey={process.env.RECAPTCHA_SITE_KEY}
+            onChange={submitIfHuman}
+          />
+          <Grid item xs={12}>
             <Button
               variant="raised"
               color="primary"

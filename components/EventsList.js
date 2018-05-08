@@ -8,7 +8,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 
 // utils
-import { getFormattedDate } from '../lib/utils'
+import { getFormattedDate, getFormattedDay } from '../lib/utils'
 
 // components
 import EventsListRow from '../hoc/EventsListRowHoc'
@@ -23,7 +23,8 @@ const EventsList = ({ allEvents = [], classes }) => {
   const events = dateKeys.map(eventDate => (
     <div className={classes.eventListGroup} key={eventDate}>
       <Typography variant="body1" className={classes.eventListDate}>
-        {getFormattedDate(eventDate)}
+        <span className={classes.eventDate}>{getFormattedDate(eventDate)}</span>,{' '}
+        {getFormattedDay(eventDate)}
       </Typography>
       {groupedEvents[eventDate].map(event => (
         <EventsListRow key={event.id} event={event} />

@@ -9,5 +9,6 @@ export default theme => ({
   },
   eventListGroup: {
     marginBottom: theme.spacing.unit * 2
-  }
+  },
+  eventDate: theme.typography.body2
 })

@@ -5,10 +5,17 @@ import {
   withPropsOnChange,
   withHandlers
 } from 'recompose'
-import { reduxForm, formValueSelector, reset } from 'redux-form'
-import { connect } from 'react-redux'
+import { reduxForm, reset, getFormValues } from 'redux-form'
+import { connect, bindActionCreators } from 'react-redux'
 import { graphql, compose as apolloCompose } from 'react-apollo'
 import debounce from 'lodash.debounce'
+
+// selectors
+import {
+  maxStartDateSelector,
+  visibleEndDateFieldSelector,
+  minEndDateSelector
+} from '../../store/selectors'
 
 // gql
 import { allCryptoCoins } from '../../gql/queries'
@@ -43,11 +50,18 @@ const withData = apolloCompose(
     })
   }),
   graphql(createEvent, {
-    props: ({ mutate, ownProps: { setMutationLoading, showSnackbar } }) => ({
-      onSubmit: async variables => {
+    props: ({
+      mutate,
+      ownProps: {
+        setMutationLoading,
+        showSnackbar,
+        formVariables: variables,
+        resetCreateEventForm
+      }
+    }) => ({
+      submitForm: async () => {
         try {
           setMutationLoading(true)
-
           let data = new FormData()
           data.append('data', variables.imageProof)
 
@@ -63,7 +77,7 @@ const withData = apolloCompose(
           })
 
           setMutationLoading(false)
-
+          resetCreateEventForm()
           showSnackbar({
             message:
               "Event successfully created. It'll be visible after confirmation."
@@ -71,6 +85,9 @@ const withData = apolloCompose(
         } catch (e) {
           console.log(e)
           setMutationLoading(false)
+          showSnackbar({
+            message: 'Something went wrong.'
+          })
         }
       }
     })
@@ -82,50 +99,47 @@ const withMethods = withHandlers({
     showSnackbar({
       message: 'Inputs validation failed. Please correct the red fields.'
     })
+  },
+  onSubmit: () => () => {
+    const { grecaptcha } = window
+    if (!grecaptcha) return
+    grecaptcha.execute()
   }
 })
 
-const selector = formValueSelector('createEventForm')
-
-const maxStartDateSelector = state => {
-  const { endDate, isAllDay, isUnkownEndDate } = selector(
-    state,
-    'endDate',
-    'isAllDay',
-    'isUnkownEndDate'
-  )
-  if (isUnkownEndDate || isAllDay) {
-    return undefined
-  } else {
-    return endDate
+const withSubmitIfHuman = withHandlers({
+  submitIfHuman: ({ submitForm }) => recaptchaToken => {
+    console.log(recaptchaToken)
+    recaptchaToken
+      ? submitForm()
+      : showSnackbar({
+          message: 'You are not a human :) ReCaptcha verification failed.'
+        })
   }
-}
-
-const visibleEndDateFieldSelector = state => {
-  const { isAllDay, isUnkownEndDate } = selector(
-    state,
-    'isAllDay',
-    'isUnkownEndDate'
-  )
-  return !(isUnkownEndDate || isAllDay)
-}
-
-const mapStateToProps = state => ({
-  minEndDate: selector(state, 'startDate'),
-  maxStartDate: maxStartDateSelector(state),
-  visibleEndDateField: visibleEndDateFieldSelector(state)
 })
+
+const withConnect = connect(
+  state => ({
+    minEndDate: minEndDateSelector(state, 'startDate'),
+    maxStartDate: maxStartDateSelector(state),
+    visibleEndDateField: visibleEndDateFieldSelector(state),
+    formVariables: getFormValues('createEventForm')(state)
+  }),
+  dispatch => ({
+    resetCreateEventForm: () => dispatch(reset('createEventForm'))
+  })
+)
 
 const withReduxForm = reduxForm({
-  form: 'createEventForm',
-  onSubmitSuccess: (_, dispatch) => dispatch(reset('createEventForm'))
+  form: 'createEventForm'
 })
 
 export default compose(
   withSnackbar,
   withInit,
-  withData,
   withMethods,
   withReduxForm,
-  connect(mapStateToProps)
+  withConnect,
+  withData,
+  withSubmitIfHuman
 )(CreateEventForm)
