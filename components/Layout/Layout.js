@@ -7,7 +7,7 @@ import Drawer from '../../hoc/DrawerHoc'
 import Fab from '../../hoc/FabHoc'
 
 //styles
-import styles, { appContainerStyles } from '../../components/styles/appStyles'
+import styles from '../../components/styles/appStyles'
 
 const App = ({ children, classes }) => (
   <main className={classes.mainContainer}>
@@ -17,10 +17,7 @@ const App = ({ children, classes }) => (
       <Drawer />
     </div>
     <Fab />
-    <style jsx global>
-      {styles}
-    </style>
   </main>
 )
 
-export default withStyles(appContainerStyles)(App)
+export default withStyles(styles)(App)

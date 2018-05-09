@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 
 // utils
 import { withStyles } from 'material-ui/styles'
@@ -12,23 +11,23 @@ import Tooltip from 'material-ui/Tooltip'
 // styles
 import styles from '../styles/fabStyles'
 
-const Fab = ({ classes }) => (
-  <Link href="create">
-    <Tooltip id={'fab-tooltip'} title="Create Event" placement="left">
-      <Button
-        variant="fab"
-        color="primary"
-        aria-label="add"
-        className={classes.fab}
-      >
-        <Icon>add_icon</Icon>
-      </Button>
-    </Tooltip>
-  </Link>
+const Fab = ({ classes, navigateToCreateEventPage }) => (
+  <Tooltip id="fab-tooltip" title="Create Event" placement="left">
+    <Button
+      variant="fab"
+      color="primary"
+      aria-label="add"
+      className={classes.fab}
+      onClick={navigateToCreateEventPage}
+    >
+      <Icon>add_icon</Icon>
+    </Button>
+  </Tooltip>
 )
 
 Fab.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  navigateToCreateEventPage: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Fab)
