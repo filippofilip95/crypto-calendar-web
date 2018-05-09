@@ -13,7 +13,7 @@ import Icon from 'material-ui/Icon'
 import { withStyles } from 'material-ui/styles'
 
 // styles
-import styles from './styles/headerStyles'
+import styles from '../styles/headerStyles'
 
 const Header = ({ classes, handleOpenDrawer }) => {
   return (

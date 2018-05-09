@@ -2,13 +2,10 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 
 // components
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
 
 Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-export default props =>
-  <Layout {...props}>
-    {props.children}
-  </Layout>
+export default props => <Layout {...props}>{props.children}</Layout>

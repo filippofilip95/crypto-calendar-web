@@ -25,8 +25,8 @@ export default `
       }
     `
 
-export const appContainerStyles = {
-  appContainer: {
+export const appContainerStyles = theme => ({
+  appContent: {
     display: 'flex',
     flex: 1,
     maxWidth: 1200,
@@ -34,9 +34,17 @@ export const appContainerStyles = {
     justifyContent: 'center',
     minWidth: 0
   },
-  container: {
+  appContainer: {
     display: 'flex',
+    flex: [1, 0, 0],
     justifyContent: 'center',
-    minWidth: 0
+    minWidth: 0,
+    overflowY: 'scroll'
+  },
+  mainContainer: {
+    height: '100vh',
+    margin: 0,
+    display: 'flex',
+    flexDirection: 'column'
   }
-}
+})
