@@ -7,7 +7,8 @@ const { Types, Creators } = createActions({
   onOpenDrawer: null,
   onCloseDrawer: null,
   onShowGallery: ['activeGalleryEvent'],
-  onHideGallery: null
+  onHideGallery: null,
+  onToggleDrawer: null
 })
 
 export const AppTypes = Types
@@ -16,7 +17,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  drawerVisible: false,
+  drawerVisible: true,
   galleryVisible: false,
   activeGalleryEvent: {}
 })
@@ -26,6 +27,9 @@ export const INITIAL_STATE = Immutable({
 export const onOpenDrawer = state => state.merge({ drawerVisible: true })
 
 export const onCloseDrawer = state => state.merge({ drawerVisible: false })
+
+export const onToggleDrawer = state =>
+  state.merge({ drawerVisible: !state.drawerVisible })
 
 export const onShowGallery = (state, { activeGalleryEvent }) =>
   state.merge({ galleryVisible: true, activeGalleryEvent })
@@ -38,5 +42,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.ON_OPEN_DRAWER]: onOpenDrawer,
   [Types.ON_CLOSE_DRAWER]: onCloseDrawer,
   [Types.ON_SHOW_GALLERY]: onShowGallery,
-  [Types.ON_HIDE_GALLERY]: onHideGallery
+  [Types.ON_HIDE_GALLERY]: onHideGallery,
+  [Types.ON_TOGGLE_DRAWER]: onToggleDrawer
 })

@@ -1,3 +1,5 @@
+import { compose, withHandlers } from 'recompose'
+import { connect } from 'react-redux'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import Head from 'next/head'
@@ -9,7 +11,11 @@ Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-export default props => (
+const mapStateToProps = state => ({
+  drawerVisible: state.appReducer.drawerVisible
+})
+
+export default compose(connect(mapStateToProps))(props => (
   <Layout {...props}>
     <Head>
       {/* Import CSS for nprogress */}
@@ -17,4 +23,4 @@ export default props => (
     </Head>
     {props.children}
   </Layout>
-)
+))

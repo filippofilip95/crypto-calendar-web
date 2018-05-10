@@ -6,11 +6,17 @@ import purple from 'material-ui/colors/purple'
 const styles = theme => ({
   progress: {
     margin: theme.spacing.unit * 2
+  },
+  loadingContainer: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 })
 
 const Loading = ({ classes }) => (
-  <CircularProgress className={classes.progress} size={50} />
+  <div className={classes.loadingContainer}>
+    <CircularProgress className={classes.progress} size={50} />
+  </div>
 )
 
 Loading.propTypes = {

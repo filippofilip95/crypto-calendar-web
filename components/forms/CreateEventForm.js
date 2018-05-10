@@ -26,10 +26,8 @@ import { EVENT_CATEGORIES } from '../../lib/constants'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
-    marginTop: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit * 3,
-    position: 'relative'
+    paddingBottom: theme.spacing.unit * 3
   }),
   button: {
     marginTop: theme.spacing.unit * 3
@@ -195,12 +193,12 @@ const CreateEventForm = props => {
               validate={[required(), file({ maxSize: '1 MB' })]}
             />
           </Grid>
-          <ReCAPTCHA
-            size="invisible"
-            sitekey={process.env.RECAPTCHA_SITE_KEY}
-            onChange={submitIfHuman}
-          />
           <Grid item xs={12}>
+            <ReCAPTCHA
+              size="invisible"
+              sitekey={process.env.RECAPTCHA_SITE_KEY}
+              onChange={submitIfHuman}
+            />
             <Button
               variant="raised"
               color="primary"

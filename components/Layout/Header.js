@@ -15,40 +15,38 @@ import { withStyles } from 'material-ui/styles'
 // styles
 import styles from '../styles/headerStyles'
 
-const Header = ({ classes, handleOpenDrawer }) => {
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
+const Header = ({ classes, handleToggleDrawer }) => (
+  <div className={classes.root}>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Menu"
+          onClick={handleToggleDrawer}
+        >
+          <Icon>menu</Icon>
+        </IconButton>
+        <Link href="/">
+          <Typography
+            variant="headline"
             color="inherit"
-            aria-label="Menu"
-            onClick={handleOpenDrawer}
+            className={classes.headerTitle}
           >
-            <Icon>menu</Icon>
-          </IconButton>
-          <Link href="/">
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.headerTitle}
-            >
-              Crypto Events Calendar
-            </Typography>
-          </Link>
-          <Link href="/">
-            <Button color="inherit">Login</Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </div>
-  )
-}
+            Crypto Events Calendar
+          </Typography>
+        </Link>
+        <Link href="/">
+          <Button color="inherit">Login</Button>
+        </Link>
+      </Toolbar>
+    </AppBar>
+  </div>
+)
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleOpenDrawer: PropTypes.func.isRequired
+  handleToggleDrawer: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Header)

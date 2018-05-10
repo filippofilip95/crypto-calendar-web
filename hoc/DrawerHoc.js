@@ -1,4 +1,4 @@
-import { compose, withHandlers } from 'recompose'
+import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
 // components
@@ -15,13 +15,4 @@ const mapDispatchToProps = {
   ...AppActions
 }
 
-const withComponentHandlers = withHandlers({
-  handleCloseDrawer: props => () => {
-    props.onCloseDrawer()
-  }
-})
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withComponentHandlers
-)(Drawer)
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Drawer)

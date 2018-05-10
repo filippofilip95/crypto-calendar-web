@@ -12,8 +12,8 @@ const mapDispatchToProps = {
 }
 
 const withComponentHandlers = withHandlers({
-  handleOpenDrawer: props => () => {
-    props.onOpenDrawer()
+  handleToggleDrawer: props => () => {
+    props.onToggleDrawer()
   }
 })
 

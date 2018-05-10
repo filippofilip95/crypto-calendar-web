@@ -1,7 +1,6 @@
 export default theme => ({
   root: {
-    minWidth: 0,
-    flexGrow: 1
+    minWidth: 0
   },
   eventListDate: {
     marginBottom: theme.spacing.unit * 2,
