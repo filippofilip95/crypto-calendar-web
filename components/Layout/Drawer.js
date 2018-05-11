@@ -17,7 +17,7 @@ const styles = theme => ({
   }
 })
 
-const Drawer = ({ drawerVisible, classes }) => {
+const Drawer = ({ drawerVisible, classes, activeRoute }) => {
   return (
     <MaterialDrawer
       className={classes.drawerPaper}
@@ -27,14 +27,15 @@ const Drawer = ({ drawerVisible, classes }) => {
         paper: classes.drawerPaper
       }}
     >
-      <DrawerList />
+      <DrawerList activeRoute={activeRoute} />
     </MaterialDrawer>
   )
 }
 
 Drawer.propTypes = {
   drawerVisible: PropTypes.bool.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  activeRoute: PropTypes.string.isRequired
 }
 
 export default withStyles(styles)(Drawer)
