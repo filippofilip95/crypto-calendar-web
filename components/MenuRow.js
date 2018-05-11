@@ -41,7 +41,7 @@ MenuRow.propTypes = {
   href: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   selected: PropTypes.bool,
   classes: PropTypes.object.isRequired
 }

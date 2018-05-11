@@ -8,9 +8,9 @@ import GalleryModal from '../hoc/GalleryModalHoc'
 
 const queryVariables = {
   first: 100,
-  orderBy: 'startDate_ASC',
+  orderBy: 'startDate_DESC',
   filter: {
-    startDate_gte: startOfDay(new Date())
+    startDate_lte: startOfDay(new Date())
   }
 }
 

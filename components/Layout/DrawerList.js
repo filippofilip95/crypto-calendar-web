@@ -28,7 +28,6 @@ const DrawerList = ({ classes, theme: { palette }, activeRoute }) => {
   const isRouteActive = pathname => pathname === activeRoute
   return (
     <MenuList className={classes.listContainer}>
-      {console.log(activeRoute)}
       <MenuRow
         selected={isRouteActive('/')}
         href="/"
@@ -37,8 +36,8 @@ const DrawerList = ({ classes, theme: { palette }, activeRoute }) => {
         text="Upcoming Events"
       />
       <MenuRow
-        // selected={isRouteActive('/')}
-        // href="/"
+        selected={isRouteActive('/past-events')}
+        href="/past-events"
         icon="history"
         color="#4285F4"
         text="Past Events"
@@ -53,25 +52,25 @@ const DrawerList = ({ classes, theme: { palette }, activeRoute }) => {
       <Divider />
       <MenuRow
         // selected={isRouteActive('/')}
-        // href="/"
+        href="/"
         icon="label"
         text="Advertising"
       />
       <MenuRow
         // selected={isRouteActive('/')}
-        // href="/"
+        href="/"
         icon="settings"
         text="Settings"
       />
       <MenuRow
         // selected={isRouteActive('/')}
-        // href="/"
+        href="/"
         icon="code"
         text="Api"
       />
       <MenuRow
         // selected={isRouteActive('/')}
-        // href="/"
+        href="/"
         icon="help"
         text="Help"
       />

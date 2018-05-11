@@ -1,6 +1,5 @@
 import { compose, branch, renderComponent, renderNothing } from 'recompose'
 import { compose as apolloCompose, graphql } from 'react-apollo'
-import { startOfDay } from 'date-fns'
 
 // gql
 import { allEvents } from '../gql/queries'
@@ -12,14 +11,8 @@ import NoEventsToShow from '../components/NoEventsToShow'
 
 const withData = apolloCompose(
   graphql(allEvents, {
-    options: () => ({
-      variables: {
-        first: 100,
-        orderBy: 'startDate_ASC',
-        filter: {
-          startDate_gte: startOfDay(new Date())
-        }
-      }
+    options: ({ queryVariables }) => ({
+      variables: queryVariables
     }),
     props: ({ data: { loading, allEvents } }) => ({
       allEvents,
