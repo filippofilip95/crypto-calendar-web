@@ -10,7 +10,7 @@ const queryVariables = {
   first: 100,
   orderBy: 'startDate_DESC',
   filter: {
-    startDate_lte: startOfDay(new Date())
+    endDate_lte: startOfDay(new Date())
   }
 }
 

@@ -4,23 +4,28 @@ import PropTypes from 'prop-types'
 // ui
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
+import Buton from 'material-ui/Button'
 
 const styles = theme => ({
-  addEvent: {
-    color: theme.palette.primary.main,
-    cursor: 'pointer'
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 })
 
 const Loading = ({ classes }) => (
-  <Typography variant="subheading" paragraph>
-    No Events to show.
-    <Link href="create">
-      <Typography variant="body1" className={classes.addEvent} align="center">
-        Add Event
-      </Typography>
-    </Link>
-  </Typography>
+  <div>
+    <Typography variant="subheading" align="center" gutterBottom>
+      No Events to show.
+    </Typography>
+    <div className={classes.buttonContainer}>
+      <Link href="/create-event">
+        <Buton color="primary" align="center">
+          Add Event
+        </Buton>
+      </Link>
+    </div>
+  </div>
 )
 
 Loading.propTypes = {

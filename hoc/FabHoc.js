@@ -14,12 +14,12 @@ import Fab from '../components/Layout/Fab'
 
 const withMethods = withHandlers({
   navigateToCreateEventPage: () => () => {
-    Router.push('/create')
+    Router.push('/create-event')
   }
 })
 
 const showOnlyOnRoot = branch(
-  ({ router: { pathname } }) => pathname != '/',
+  ({ router: { pathname } }) => pathname === '/create-event',
   renderComponent(renderNothing())
 )
 

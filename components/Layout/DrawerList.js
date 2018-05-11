@@ -36,15 +36,23 @@ const DrawerList = ({ classes, theme: { palette }, activeRoute }) => {
         text="Upcoming Events"
       />
       <MenuRow
-        selected={isRouteActive('/past-events')}
-        href="/past-events"
-        icon="history"
-        color="#4285F4"
-        text="Past Events"
+        selected={isRouteActive('/ongoing-events')}
+        href="/ongoing-events"
+        icon="loop"
+        color="#EF7918"
+        text="Ongoing Events"
       />
       <MenuRow
-        selected={isRouteActive('/create')}
-        href="/create"
+        selected={isRouteActive('/completed-events')}
+        href="/completed-events"
+        icon="history"
+        color="#4285F4"
+        text="Completed Events"
+      />
+      <Divider />
+      <MenuRow
+        selected={isRouteActive('/create-event')}
+        href="/create-event"
         color={palette.secondary.main}
         icon="add_circle"
         text="Create Event"

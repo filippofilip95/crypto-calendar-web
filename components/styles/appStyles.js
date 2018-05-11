@@ -18,6 +18,7 @@ export default theme => ({
     backgroundColor: '#F2F2F2'
   },
   drawerPadding: {
-    paddingLeft: 130
+    paddingLeft: 70,
+    marginRight: -170
   }
 })
